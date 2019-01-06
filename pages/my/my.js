@@ -62,5 +62,25 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  jump: function(e) {
+    let url = ''
+    switch (e.currentTarget.id) {
+      case '0':
+        url = '/pages/address/address'
+        break;
+      case '1':
+        url = '/pages/record/record'
+        break;
+      case '2':
+        url = '/pages/help/help'
+        break;
+      case '3':
+        url = '/pages/contact/contact'
+        break;
+    }
+    wx.navigateTo({
+      url: url
+    })
   }
 })

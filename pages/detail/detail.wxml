@@ -93,7 +93,7 @@
     <image src='/images/planet.png' class='item5-image' mode='aspectFit'></image>
     <text class='done-tt'>参与成功，待开奖～</text>
   </view>
-  <view class='description'>
+  <view class='description' bindtap='tapCheckAll'>
     <text>{{'已有'+'1234'+'人参与，'}}</text>
     <text class='tt'>查看全部</text>
     <view class='arrow'></view>

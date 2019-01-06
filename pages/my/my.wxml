@@ -1,4 +1,4 @@
-<view class="item1">
+<view class="item1" id='0' bindtap='jump'>
   <image src='' class='image' mode='aspectFit'></image>
   <view class='name'>我是啥</view>
   <view class='wrapper'>
@@ -15,7 +15,7 @@
     <text class='t1'>0</text>
     <text class='t2'>参与抽奖</text>
   </view>
-  <view class='block'>
+  <view class='block' bindtap='jump' id='1'>
     <text class='t1'>0</text>
     <text class='t2'>中奖记录</text>
   </view>
@@ -27,14 +27,14 @@
     <view class='arrow'></view>
   </view>
 </view>
-<view class="item3">
+<view class="item3" bindtap='jump' id='2'>
   <image class='icon' src='/images/help.png' mode='aspectFit'></image>
   <text class='title'>帮助中心</text>
   <view class='wrapper'>
     <view class='arrow'></view>
   </view>
 </view>
-<view class="space item3">
+<view class="space item3" bindtap='jump' id='3'>
   <image class='icon' src='/images/contact.png' mode='aspectFit'></image>
   <text class='title'>联系我们</text>
   <view class='wrapper'>

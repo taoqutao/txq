@@ -53,5 +53,10 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  tapCard: function(e) {
+    wx.navigateTo({
+      url: '/pages/detail/detail',
+    })
   }
 })

@@ -64,5 +64,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  tapCheckAll: function(e) {
+    wx.navigateTo({
+      url: '/pages/members/members',
+    })
   }
 })

@@ -22,7 +22,7 @@
     </view>
     <!-- ************* card ************* -->
     <block wx:for="{{[1, 2, 3]}}">
-      <view class='card'>
+      <view class='card' bindtap='tapCard'>
         <view class='image'>
           <image class='img'></image>
           <view wx:if='{{true}}' class='badge'>
