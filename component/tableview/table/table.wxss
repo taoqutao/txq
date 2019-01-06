@@ -1,0 +1,4 @@
+/* plugin/components/table/table.wxss */
+.table-container {
+  width: 100%;
+}

@@ -1,0 +1,87 @@
+/* plugin/components/cell/cell.wxss */
+
+.cell-container {
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  margin-left: 20rpx;
+}
+
+.wrapper1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  margin-left: 20rpx; 
+}
+
+.wrapper2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.thumbnail {
+  width:44rpx;
+  height:44rpx;
+  margin-right: 10rpx;
+}
+
+.title {
+  font-size: 28rpx;
+  color: #2e2d2d;
+  letter-spacing: 0;
+  text-align: left;
+  font-family: PingFangSC-Regular;
+}
+
+.subTitle {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #848484;
+  letter-spacing: 0;
+  text-align: left;
+  margin-right: 46rpx;
+}
+
+.arrow {
+  display: inline-block;
+  position: relative;
+  width: 31.2rpx;
+  height: 31.2rpx;
+  margin-right: 20rpx;
+}
+
+.arrow::after {
+  display: inline-block;
+  content: " ";
+  height: 15.6rpx;
+  width: 15.6rpx;
+  border-width: 2rpx 2rpx 0 0;
+  border-color: #848484;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  right: 6rpx;
+  margin-top: -7rpx;
+}

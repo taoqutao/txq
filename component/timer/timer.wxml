@@ -1,0 +1,8 @@
+<!--pages/redPacketDetail/component/home/source/comps/timer/beanTimer.wxml-->
+<view class="bt-container">
+  <view class='t t2'><text class='number'>{{hour}}</text></view>
+  <view class='t t1'>:</view>
+  <view class='t t2'><text class='number'>{{minute}}</text></view>
+  <view class='t t1'>:</view>
+  <view class='t t2'><text class='number'>{{second}}</text></view>
+</view>

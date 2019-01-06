@@ -1,0 +1,25 @@
+<!--pages/detail/detail.wxml-->
+<swiper class='header' indicator-dots='{{imgUrls.length > 1}}' autoplay='true' interval="4000" duration="2000">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="banner-img" mode="aspectFit" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class='card'>
+  <text class='name'>奖品: 保温杯</text>
+  <view class='card-wrapper'>
+    <image src='/images/time1.png' class='card-icon' mode='aspectFit'></image>
+    <view class='date'>2012</view>
+    <view class='date'>自动开奖</view>
+  </view>
+  <view class='button'>
+    <block wx:if="{{index%2===0}}">
+      <view class='done'>立即参与</view>
+    </block>
+    <block wx:else>
+      <image src='/images/planet.png' class='card-button-icon' mode='aspectFit'></image>
+      <view class='description'>参与成功～</view>
+    </block>
+  </view>
+</view>

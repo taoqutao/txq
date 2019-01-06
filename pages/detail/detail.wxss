@@ -1,5 +1,4 @@
-/**index.wxss**/
-
+/* pages/detail/detail.wxss */
 Page {
   display: flex;
   flex-direction: column;
@@ -16,93 +15,6 @@ Page {
 .header .banner-img {
   width: 100%;
   height: 100%;
-}
-
-.title {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #ec6059;
-  margin-top: 30rpx;
-  font-size: 34rpx;
-  font-family: PingFangSC-Semibold;
-}
-
-.title .line {
-  margin-top: 10rpx;
-  width: 180rpx;
-  background-color: #ec6059;
-  height: 4rpx;
-}
-
-.body {
-  width: 100%;
-  background-color: #f2f2f2;
-}
-
-.body .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 20rpx 0 20rpx;
-}
-
-.tip {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  margin-top: 20rpx;
-  font-size: 28rpx;
-}
-
-.tip-icon-left {
-  width: 30rpx;
-  height: 30rpx;
-}
-
-.tip-title {
-  color: #818181;
-  margin-left: 20rpx;
-}
-
-.tip-wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.tip-wrapper .tip-subtitle {
-  color: #008ef8;
-  font-family: PingFangSC-Medium;
-}
-
-.tip-wrapper .tip-icon-right {
-  display: inline-block;
-  position: relative;
-  width: 26rpx;
-  height: 26rpx;
-}
-
-.tip-wrapper .tip-icon-right::after {
-  display: inline-block;
-  content: " ";
-  height: 13rpx;
-  width: 13rpx;
-  border-width: 2rpx 2rpx 0 0;
-  border-color: #848484;
-  border-style: solid;
-  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-  position: absolute;
-  top: 50%;
-  right: 6rpx;
-  margin-top: -7rpx;
 }
 
 .card {
@@ -210,21 +122,4 @@ Page {
 
 .card .button .description {
   color: #7B7B7B
-}
-
-.footer {
-  width: 100%;
-  height: 120rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 20rpx;
-  color: #383838;
-}
-
-.ad {
-  width: 100%;
-  height: 231rpx;
-  background-color: gray;
 }

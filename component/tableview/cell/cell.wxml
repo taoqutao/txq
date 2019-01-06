@@ -1,0 +1,13 @@
+<!--plugin/components/cell/cell.wxml-->
+<view class='cell-container'>
+  <view class='content' style="{{isLast ? '':'border-bottom: 1px solid #e0e0e0;'}}">
+    <view class='wrapper1'>
+    <image class='thumbnail' wx:if='{{data.thumbnail}}' mode='aspectFit' src='{{data.thumbnail}}'></image>
+    <view class='title'>{{data.title}}</view>
+    </view>
+    <view class='wrapper2'>
+      <view class='subTitle' wx:if='{{data.subTitle}}'>{{data.subTitle}}</view>
+      <view class='arrow' wx:if='{{!data.hideArrow}}'></view>
+    </view>
+  </view>
+</view>

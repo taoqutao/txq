@@ -1,13 +1,56 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+<swiper class='header' indicator-dots='{{imgUrls.length > 1}}' autoplay='true' interval="4000" duration="2000">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="banner-img" mode="aspectFit" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class='title'>
+  <text>星球精选</text>
+  <view class='line'></view>
+</view>
+<view class='body'>
+  <view class='container'>
+    <!-- ************* tip ************* -->
+    <view class='tip'>
+      <image src='/images/tip.png' class='tip-icon-left' mode='aspectFit'></image>
+      <text class='tip-title'>关注微信号，上新福利及时获取哦～</text>
+      <view class='tip-wrapper'>
+        <view class='tip-subtitle'>去关注</view>
+        <view class='tip-icon-right'></view>
+      </view>
+    </view>
+    <!-- ************* card ************* -->
+    <block wx:for="{{[1, 2, 3]}}">
+      <view class='card'>
+        <view class='image'>
+          <image class='img'></image>
+          <view wx:if='{{true}}' class='badge'>
+            <text class='badge-description'>阿瑟费撒</text>
+            <text class='badge-description'>赞助</text>
+          </view>
+        </view>
+        <text class='name'>奖品: 保温杯</text>
+        <view class='card-wrapper'>
+          <image src='/images/time1.png' class='card-icon' mode='aspectFit'></image>
+          <view class='date'>2012</view>
+          <view class='date'>自动开奖</view>
+        </view>
+        <view class='button'>
+          <block wx:if="{{index%2===0}}">
+            <view class='done'>立即参与</view>
+          </block>
+          <block wx:else>
+            <image src='/images/planet.png' class='card-button-icon' mode='aspectFit'></image>
+            <view class='description'>参与成功～</view>
+          </block>
+        </view>
+      </view>
     </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <view class='footer'>
+      <text>更多福利即将上线～</text>
+    </view>
   </view>
 </view>
+
+<view class='ad'></view>

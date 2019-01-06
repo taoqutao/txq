@@ -1,0 +1,39 @@
+/* pages/redPacketDetail/component/home/source/comps/timer/beanTimer.wxss */
+.bt-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.bt-container .t {
+  font-size: 24rpx;
+  text-align: center;
+  font-family: JDZhengHei-01-Regular, PingFangSC-Regular;
+}
+
+.bt-container .t1 {
+  margin: 0 4rpx 3rpx 4rpx;
+  color: white;
+}
+
+.bt-container .t2 {
+  background-color: white;
+  border-radius: 10rpx;
+  width: 36rpx;
+  height: 30rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.number {
+  font-family: JDZhengHei-01-Regular, PingFangSC-Regular;
+  color: #FB6E14;
+  margin-top:2rpx;
+}

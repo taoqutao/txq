@@ -1,0 +1,43 @@
+<view class="item1">
+  <image src='' class='image' mode='aspectFit'></image>
+  <view class='name'>我是啥</view>
+  <view class='wrapper'>
+    <view class='address'>收获地址</view>
+    <view class='arrow'></view>
+  </view>
+</view>
+<view class="item2">
+  <view class='block'>
+    <text class='t1'>0</text>
+    <text class='t2'>发起抽奖</text>
+  </view>
+  <view class='block'>
+    <text class='t1'>0</text>
+    <text class='t2'>参与抽奖</text>
+  </view>
+  <view class='block'>
+    <text class='t1'>0</text>
+    <text class='t2'>中奖记录</text>
+  </view>
+</view>
+<view class="space item3">
+  <image class='icon' src='/images/share.png' mode='aspectFit'></image>
+  <text class='title'>分享给好友</text>
+  <view class='wrapper'>
+    <view class='arrow'></view>
+  </view>
+</view>
+<view class="item3">
+  <image class='icon' src='/images/help.png' mode='aspectFit'></image>
+  <text class='title'>帮助中心</text>
+  <view class='wrapper'>
+    <view class='arrow'></view>
+  </view>
+</view>
+<view class="space item3">
+  <image class='icon' src='/images/contact.png' mode='aspectFit'></image>
+  <text class='title'>联系我们</text>
+  <view class='wrapper'>
+    <view class='arrow'></view>
+  </view>
+</view>
