@@ -1,0 +1,56 @@
+/* pages/members/members.wxss */
+Page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #F0EFF4;
+}
+
+.item {
+  background-color: white;
+  width: 100%;
+  height: 105rpx;
+  border-bottom: 4rpx solid #F2F2F2;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 30rpx;
+}
+
+.item .icon {
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 34rpx;
+  background-color: red;
+}
+
+.item .item-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 30rpx;
+}
+
+.item .t1 {
+  margin-left: 30rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Thin;
+}
+
+.item .t2 {
+  font-size: 24rpx;
+  font-family: PingFangSC-Thin;
+  color: #B5B5B5
+}
+
+.ad {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 250rpx;
+  background-color: pink;
+}

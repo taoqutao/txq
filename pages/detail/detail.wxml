@@ -1,25 +1,125 @@
 <!--pages/detail/detail.wxml-->
-<swiper class='header' indicator-dots='{{imgUrls.length > 1}}' autoplay='true' interval="4000" duration="2000">
-  <block wx:for="{{imgUrls}}">
-    <swiper-item>
-      <image src="{{item}}" class="banner-img" mode="aspectFit" />
-    </swiper-item>
+<view class='item1'>
+  <swiper class='header' indicator-dots='{{imgUrls.length > 1}}' autoplay='true' interval="4000" duration="2000">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="banner-img" mode="aspectFit" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='card'>
+    <text class='name'>奖品: 保温杯</text>
+    <view class='card-wrapper'>
+      <view class='state'>进行中</view>
+    </view>
+    <view class='card-wrapper'>
+      <image src='/images/time1.png' class='card-icon' mode='aspectFit'></image>
+      <view class='date'>发起人：</view>
+      <view class='date'>啊啊啊</view>
+      <view class='wx-btn'>加微信</view>
+    </view>
+    <view class='card-wrapper'>
+      <image src='/images/time1.png' class='card-icon' mode='aspectFit'></image>
+      <view class='date'>2012</view>
+      <view class='date'>自动开奖</view>
+    </view>
+    <view class='button'>
+      <image src='/images/ufo.png' class='card-button-icon' mode='aspectFit'></image>
+      <view class='description'>1234</view>
+    </view>
+    <view class='line'></view>
+    <view class='bottom'>
+      <image src='/images/medal.png' class='bottom-icon' mode='aspectFit'></image>
+      <view class='bottom-txt'>赞助商</view>
+      <view class='bottom-txt bottom-description'>我我我哦我</view>
+    </view>
+  </view>
+</view>
+
+<!-- ************* item2 ************* -->
+
+<view class='item2'>
+  <view class='item2-container'>
+    <text class='tt t1'>活动说明</text>
+
+    <view class='item2-wrapper'>
+
+      <text class='tt'>奖品数量：</text>
+      <text class='tt'>2</text>
+      <text class='tt' style='margin-left:80rpx'>奖品名额：</text>
+      <text class='tt'>2</text>
+    </view>
+    <text class='tt' style='margin-bottom: 20rpx'>活动说明活动说明活动说明活动说明活动说明活动说明活动说明活动说明活动说明活动说明活动说明活动说明</text>
+    <block wx:for="{{imgUrls}}">
+      <image src='' class='item2-img' mode='aspectFit'></image>
+    </block>
+  </view>
+</view>
+
+<!-- ************* item3 ************* -->
+
+<view class='item3'>
+  <view class='item3-container'>
+    <text class='t1'>奖项</text>
+    <image src='' class='item3-img' mode='aspectFit'></image>
+    <text class='t2'>奖品 X 2</text>
+    <view class='item3-description'>
+      <view class='item3-txt'>
+        <text>本活动最终解释权归活动发起者所有，与平台无关，如有问题，请联系客服进行举报</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- ************* item4 ************* -->
+
+<view wx:if='{{true}}' class='item4'>
+  <block wx:for='{{[1, 2, 3]}}'>
+    <view class='card'>
+      <image src='' class='icon' mode='aspectFit'></image>
+      <text class='t1'>abcd</text>
+      <view class='card-wrapper'>
+        <text class='t2'>小米充电宝</text>
+      </view>
+    </view>
   </block>
-</swiper>
-<view class='card'>
-  <text class='name'>奖品: 保温杯</text>
-  <view class='card-wrapper'>
-    <image src='/images/time1.png' class='card-icon' mode='aspectFit'></image>
-    <view class='date'>2012</view>
-    <view class='date'>自动开奖</view>
+</view>
+
+<!-- ************* item5 ************* -->
+
+<view class='item5'>
+  <view wx:if='{{false}}' class='do'>参与抽奖</view>
+  <view wx:elif='{{true}}' class='done'>
+    <image src='/images/planet.png' class='item5-image' mode='aspectFit'></image>
+    <text class='done-tt'>参与成功，待开奖～</text>
   </view>
-  <view class='button'>
-    <block wx:if="{{index%2===0}}">
-      <view class='done'>立即参与</view>
-    </block>
-    <block wx:else>
-      <image src='/images/planet.png' class='card-button-icon' mode='aspectFit'></image>
-      <view class='description'>参与成功～</view>
+  <view class='description'>
+    <text>{{'已有'+'1234'+'人参与，'}}</text>
+    <text class='tt'>查看全部</text>
+    <view class='arrow'></view>
+  </view>
+  <!-- 最多8个 -->
+  <view class='icons'>
+    <block wx:for='{{[1,2,3]}}'>
+      <image src='' class='avatar' mode='aspectFit'></image>
     </block>
   </view>
+  <view class='line'></view>
+</view>
+
+<view class='item6'></view>
+
+<view class='item7'>
+  <view class='button'>分享给好友</view>
+</view>
+
+<!-- ************* tip ************* -->
+
+<view class='tip'>
+  <view class='shape'></view>
+  <view class='tip-container'>
+    <text class='txt' decode='{{true}}'>&nbsp;&nbsp;&nbsp;点击“添加到桌面”，参与抽奖快人一步～&nbsp;&nbsp;&nbsp;</text>
+    <view class='close'>x</view>
+  </view>
+
 </view>

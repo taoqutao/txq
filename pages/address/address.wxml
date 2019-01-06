@@ -1,0 +1,19 @@
+<!--pages/address/address.wxml-->
+<view class='item' style='background-color:rgba(0,0,0,0)'>
+  <text class='t2'>请完善收货地址，以便发起人及时准确地给你发放奖品</text>
+</view>
+<view class='item'>
+  <text class='t1'>联系人</text>
+  <input class='input' placeholder='名字'></input>
+</view>
+<view class='item'>
+  <text class='t1'>手机号</text>
+  <input class='input' placeholder='11位手机号'></input>
+</view>
+<view class='item'>
+  <text class='t1'>详细地址</text>
+  <textarea class='input' placeholder='详细地址' auto-height='true'></textarea>
+  <image src='/images/location.png' class='image' mode='aspectFit'></image>
+</view>
+
+<view class='btn'>完成</view>

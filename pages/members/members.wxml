@@ -1,0 +1,12 @@
+<!--pages/members/members.wxml-->
+<block wx:for='{{[1, 2, 3]}}'>
+  <view class='item'>
+    <image src='' class='icon' mode='aspectFit'></image>
+    <text class='t1'>abcd</text>
+    <view class='item-wrapper'>
+      <text class='t2'>2012</text>
+    </view>
+  </view>
+</block>
+
+<view class='ad'></view>

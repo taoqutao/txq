@@ -1,0 +1,16 @@
+<!--pages/contact/contact.wxml-->
+<view class='container'>
+  <text class='tt t1'>如有商务合作或其他问题请联系我们：</text>
+  <text class='tt t2'>联系人：黎先生 \n 联系电话：17891955861</text>
+  <text class='tt t2'>客服微信号：ccc1998vvv \n 客服QQ:123070851</text>
+  <view class='wrapper'>
+    <view class='box'>
+      <image src='/images/wx.jpg' class='image' mode='aspectFit'></image>
+      <text class='t3'>客服微信</text>
+    </view>
+    <view class='box'>
+      <image src='/images/qq.png' class='image' mode='aspectFit'></image>
+      <text class='t3'>客服QQ</text>
+    </view>
+  </view>
+</view>

@@ -1,8 +1,13 @@
 {
   "pages": [
+    "pages/contact/contact",
+    "pages/help/help",
+    "pages/address/address",
+    "pages/record/record",
+    "pages/detail/detail",
     "pages/index/index",
     "pages/my/my",
-    "pages/detail/detail"
+    "pages/members/members"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,7 +23,7 @@
     "list": [
       {
         "text": "每日福利",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/contact/contact",
         "iconPath": "images/index.jpg",
         "selectedIconPath": "images/index_selected.jpg"
       },

@@ -1,0 +1,28 @@
+/* pages/help/help.wxss */
+Page {
+  background-color: #f0eff4;
+  padding-top: 20rpx;
+}
+
+.container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.tt {
+  margin-top: 30rpx; 
+  font-size: 28rpx;
+  width: 690rpx;
+  word-break: normal;
+}
+
+.t1 {
+  font-family: PingFangSC-Semibold;
+}
+
+.t2 {
+  font-family: PingFangSC-Regular;
+}

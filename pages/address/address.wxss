@@ -1,0 +1,52 @@
+/* pages/address/address.wxss */
+Page {
+  background-color: #f0eff4;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.item {
+  width: 100%;
+  min-height: 90rpx;
+  background-color: white;
+  margin-bottom: 4rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.t1 {
+  width: 130rpx;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+
+.t2 {
+  font-size: 24rpx;
+  color: #B3B3B4;
+  margin-left: 20rpx;
+}
+.input {
+  width: 520rpx;
+  font-size: 28rpx;
+  margin: 20rpx 0 20rpx 0;
+}
+.image {
+  width: 38rpx;
+  height: 38rpx;
+  margin-left: 10rpx;
+}
+.btn {
+  width: 660rpx;
+  height: 82rpx;
+  margin-top: 38rpx;
+  color: white;
+  background-color: #ED605A;
+  font-size: 40rpx;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
