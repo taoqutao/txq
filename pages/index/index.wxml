@@ -21,19 +21,19 @@
       </view>
     </view>
     <!-- ************* card ************* -->
-    <block wx:for="{{[1, 2, 3]}}">
-      <view class='card' bindtap='tapCard'>
+    <block wx:for="{{activities}}">
+      <view class='card' bindtap='tapCard' id='{{item.id}}'>
         <view class='image'>
-          <image class='img'></image>
+          <image class='img' src='{{item.goodsImg}}' mode='aspectFit'></image>
           <view wx:if='{{true}}' class='badge'>
             <text class='badge-description'>阿瑟费撒</text>
             <text class='badge-description'>赞助</text>
           </view>
         </view>
-        <text class='name'>奖品: 保温杯</text>
+        <text class='name'>{{'奖品: '+ item.goodsName + ' x ' + item.goodsCount }}</text>
         <view class='card-wrapper'>
           <image src='/images/time1.png' class='card-icon' mode='aspectFit'></image>
-          <view class='date'>2012</view>
+          <view class='date'>{{item.endTime}}</view>
           <view class='date'>自动开奖</view>
         </view>
         <view class='button'>
@@ -53,4 +53,4 @@
   </view>
 </view>
 
-<view class='ad'></view>
+<!-- <view class='ad'></view> -->

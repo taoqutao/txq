@@ -1,50 +1,42 @@
 //index.js
-//获取应用实例
+import {
+  twx
+} from '../../twx/twx.js'
 const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     imgUrls: [
       '/images/banner.jpg',
     ],
+    activities: []
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+  onLoad: function() {
+    wx.showLoading()
+    twx.request({
+      url: '/api/activity/query',
+      method: 'GET'
+    }).then((data) => {
+      if (data.code) {
+        const {
+          data: {
+            luckActivityList = []
+          }
+        } = data
+
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+          activities: luckActivityList
         })
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    }).finally(()=>{
+      wx.hideLoading()
+    })
+  },
+  onShow: function() {
+    twx.request({
+      url: '/api/info/config',
+      method: 'GET'
+    })
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -55,11 +47,12 @@ Page({
     })
   },
   tapCard: function(e) {
+    const {id} = e.currentTarget
     wx.navigateTo({
-      url: '/pages/detail/detail',
+      url: '/pages/detail/detail?id='+`${id}`,
     })
   },
-  tapSubscribe : function(e) {
+  tapSubscribe: function(e) {
     wx.navigateTo({
       url: '',
     })

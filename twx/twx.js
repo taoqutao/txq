@@ -73,6 +73,11 @@ var twx = (function() {
       get: function() {
         return require('./ext/twx.throttle.js').throttle
       }
+    },
+    auth: {
+      get: function () {
+        return require('./ext/twx.auth.js').checkAndReqAuth
+      }
     }
   });
 

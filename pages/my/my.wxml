@@ -1,6 +1,6 @@
 <view class="item1" id='0' bindtap='jump'>
-  <image src='' class='image' mode='aspectFit'></image>
-  <view class='name'>我是啥</view>
+  <image src='{{userInfo.avatarUrl}}' class='image' mode='aspectFit'></image>
+  <view class='name'>{{userInfo.nickName}}</view>
   <view class='wrapper'>
     <view class='address'>收获地址</view>
     <view class='arrow'></view>
