@@ -58,5 +58,10 @@ Page({
     wx.navigateTo({
       url: '/pages/detail/detail',
     })
+  },
+  tapSubscribe : function(e) {
+    wx.navigateTo({
+      url: '',
+    })
   }
 })

@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "ts": "/pages/detail/components/tip-success"
+  }
+}

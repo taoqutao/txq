@@ -15,7 +15,7 @@
     <view class='tip'>
       <image src='/images/tip.png' class='tip-icon-left' mode='aspectFit'></image>
       <text class='tip-title'>关注微信号，上新福利及时获取哦～</text>
-      <view class='tip-wrapper'>
+      <view class='tip-wrapper' bindtap='tapSubscribe'>
         <view class='tip-subtitle'>去关注</view>
         <view class='tip-icon-right'></view>
       </view>

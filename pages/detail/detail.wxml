@@ -123,3 +123,6 @@
   </view>
 
 </view>
+
+<!-- ************* toast ************* -->
+<ts type='reward-failed'/>
