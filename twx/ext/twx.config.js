@@ -20,7 +20,7 @@ var config = {
     } else if (env == 'stg') {
       return 'm.taoqutao.com';
     } else if (env == 'test') {
-      return '192.168.0.107:8011';
+      return '47.97.125.6:8011';
     } else {
       return 'm.taoqutao.com';
     }

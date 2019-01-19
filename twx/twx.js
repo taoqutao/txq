@@ -51,9 +51,9 @@ var twx = (function() {
       },
       enumerable: true
     },
-    jumpLogin: {
+    login: {
       get: function() {
-        return require('./ext/twx.loginUtil.js').jumpLogin;
+        return require('./ext/twx.loginUtil.js').login;
       },
       enumerable: true
     },

@@ -34,7 +34,7 @@ function __createHeader(header) {
     _header["UserAgent"] = "tqt-servicewechat";
     _header["wechatAppId"] = twx.appId;
     _header['Cookie'] = headerCookie;
-    _header['userId'] = wx.getStorageSync('twxlogin_userId') || ''
+    _header['token'] = wx.getStorageSync('twx_token') || ''
     var netType = ['wifi', '2g', '3g', '4g', 'none', 'unknown'].indexOf(twx.networkType);
     netType = netType == -1 ? 6 : netType + 1;
     _header["clientInfo"] = JSON.stringify({

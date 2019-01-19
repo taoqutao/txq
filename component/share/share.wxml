@@ -1,0 +1,6 @@
+<!--components/share/share.wxml-->
+<view class='share-container' catchtouchmove='catch'>
+  <canvas canvas-id='shareCanvas' style="width:240px;height:375px;background-color:#C8534B"></canvas>
+  <text class='text' wx:if='{{isImgLoaded}}'>该图片已保存到手机相册</text>
+  <view class='btn' bindtap='hideDialog'>我知道了</view>
+</view>

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "ts": "/pages/detail/components/tip-success"
+    "ts": "/pages/detail/components/tip-success",
+    "share": "/component/share/share"
   }
 }

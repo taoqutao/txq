@@ -1,20 +1,23 @@
 // pages/my/my.js
+import {twx} from '../../twx/twx.js'
+const app = getApp()
 Page({
-
   /**
    * Page initial data
    */
   data: {
-
+    userInfo: {
+      nickName: '点击登录',
+      avatarUrl: '/images/ufo.png'
+    },
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    
   },
-
   /**
    * Lifecycle function--Called when page is initially rendered
    */
@@ -26,7 +29,10 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-
+    // 获取用户信息
+    app.globalData.userInfo && this.setData({
+      userInfo: app.globalData.userInfo
+    })
   },
 
   /**
@@ -67,7 +73,16 @@ Page({
     let url = ''
     switch (e.currentTarget.id) {
       case '0':
-        url = '/pages/address/address'
+        if (this.data.userInfo) {
+          url = '/pages/address/address'
+        } else if (e.detail.userInfo) {
+          app.globalData.userInfo = e.detail.userInfo
+          this.setData({
+            userInfo: e.detail.userInfo
+          })
+        } else {
+          return;
+        } 
         break;
       case '1':
         url = '/pages/record/record'

@@ -20,11 +20,15 @@ Page {
   background-color: white;
 }
 
+.item1::after{
+  border: none;
+}
+
 .item1 .image {
   width: 136rpx;
   height: 136rpx;
   border-radius: 68rpx;
-  background-color: black;
+  border: 1px solid #BFBFBF;
   margin-left: 30rpx;
 }
 

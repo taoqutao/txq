@@ -17,6 +17,9 @@ Component({
 
   },
 
+  ready: function() {
+
+  },
   /**
    * Component methods
    */

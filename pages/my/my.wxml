@@ -1,11 +1,11 @@
-<view class="item1" id='0' bindtap='jump'>
+<button class="item1" id='0' open-type='getUserInfo' bindgetuserinfo='jump'>
   <image src='{{userInfo.avatarUrl}}' class='image' mode='aspectFit'></image>
   <view class='name'>{{userInfo.nickName}}</view>
   <view class='wrapper'>
     <view class='address'>收获地址</view>
     <view class='arrow'></view>
   </view>
-</view>
+</button>
 <view class="item2">
   <view class='block'>
     <text class='t1'>0</text>

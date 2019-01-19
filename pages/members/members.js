@@ -1,18 +1,27 @@
 // pages/members/members.js
+import {
+  twx
+} from '../../twx/twx.js'
+
 Page({
 
   /**
    * Page initial data
    */
   data: {
-
+    userInfo: null
   },
 
   /**
    * Lifecycle function--Called when page load
    */
-  onLoad: function (options) {
-
+  onLoad: function (options) { 
+    twx.request({
+      url: '/api/activity/order/' + `${options.activityId}`,
+      method: 'GET'
+    }).then((data) => {
+      console.log(data)
+    })
   },
 
   /**

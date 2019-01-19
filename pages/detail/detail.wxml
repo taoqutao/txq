@@ -1,9 +1,9 @@
 <!--pages/detail/detail.wxml-->
 <view class='item1'>
   <swiper class='header' indicator-dots='{{imgUrls.length > 1}}' autoplay='true' interval="4000" duration="2000">
-    <block wx:for="{{[1]}}">
+    <block wx:for="{{info.imgs}}">
       <swiper-item>
-        <image src="{{info.goodsImg}}" class="banner-img" mode="aspectFit" />
+        <image src="{{item}}" class="banner-img" mode="aspectFit" />
       </swiper-item>
     </block>
   </swiper>
@@ -15,8 +15,8 @@
     <view class='card-wrapper'>
       <image src='/images/time1.png' class='card-icon' mode='aspectFit'></image>
       <view class='date'>发起人：</view>
-      <view class='date'>啊啊啊</view>
-      <view class='wx-btn'>加微信</view>
+      <view class='date'>{{info.author}}</view>
+      <view class='wx-btn' bindtap='tapClip'>加微信</view>
     </view>
     <view class='card-wrapper'>
       <image src='/images/time1.png' class='card-icon' mode='aspectFit'></image>
@@ -25,13 +25,13 @@
     </view>
     <view class='button'>
       <image src='/images/ufo.png' class='card-button-icon' mode='aspectFit'></image>
-      <view class='description'>1234</view>
+      <view class='description'>{{info.amount}}</view>
     </view>
     <view class='line'></view>
     <view class='bottom'>
       <image src='/images/medal.png' class='bottom-icon' mode='aspectFit'></image>
       <view class='bottom-txt'>赞助商</view>
-      <view class='bottom-txt bottom-description'>我我我哦我</view>
+      <view class='bottom-txt bottom-description'>{{info.sponsor}}</view>
     </view>
   </view>
 </view>
@@ -48,8 +48,8 @@
       <text class='tt' style='margin-left:80rpx'>{{'奖品名额：' + info.rewardCount}}</text>
     </view>
     <text class='tt' style='margin-bottom: 20rpx'>{{info.description}}</text>
-    <block wx:for="{{imgUrls}}">
-      <image src='' class='item2-img' mode='aspectFit'></image>
+    <block wx:for="{{info.activity_imgs}}">
+      <image src='{{item}}' class='item2-img' mode='aspectFit'></image>
     </block>
   </view>
 </view>
@@ -85,14 +85,17 @@
 
 <!-- ************* item5 ************* -->
 
-<view class='item5'>
-  <view wx:if='{{false}}' class='do'>参与抽奖</view>
-  <view wx:elif='{{true}}' class='done'>
+<view class='item8' wx:if="{{ info.order_state == 1 || info.process == 10 }}">
+  <view wx:if='{{info.order_state == 1}}' class='done'>
     <image src='/images/planet.png' class='item5-image' mode='aspectFit'></image>
     <text class='done-tt'>参与成功，待开奖～</text>
   </view>
+  <button class='do' wx:else open-type='getUserInfo' bindgetuserinfo='tapDo'>参与抽奖</button>
+</view>
+
+<view class='item5'>  
   <view class='description' bindtap='tapCheckAll'>
-    <text>{{'已有'+'1234'+'人参与，'}}</text>
+    <text>{{'已有'+ info.members_count + '人参与，'}}</text>
     <text class='tt'>查看全部</text>
     <view class='arrow'></view>
   </view>
@@ -108,7 +111,7 @@
 <!-- <view class='item6'></view> -->
 
 <view class='item7'>
-  <view class='button'>分享给好友</view>
+  <view class='button' bindtap='tapShare'>分享给好友</view>
 </view>
 
 <!-- ************* tip ************* -->
@@ -122,4 +125,5 @@
 </view>
 
 <!-- ************* toast ************* -->
-<!-- <ts type='reward-failed'/> -->
+<ts type='{{info.order_state}}'/>
+<share wx:if='{{showShare}}' bindcustomEvent='tapShareButton'/>

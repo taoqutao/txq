@@ -20,12 +20,19 @@ Page({
       if (data.code) {
         const {
           data: {
-            luckActivityList = []
+            luck_activity_list = []
           }
         } = data
-
+        let list = luck_activity_list.map((item, idx)=>{
+          const { goods_img } = item;
+          let img = goods_img.split(',')[0]
+          return {
+            ...item,
+            goods_img: getApp().globalData.config.image_url + img
+          }
+        })
         this.setData({
-          activities: luckActivityList
+          activities: list
         })
       }
     }).finally(()=>{
@@ -33,10 +40,7 @@ Page({
     })
   },
   onShow: function() {
-    twx.request({
-      url: '/api/info/config',
-      method: 'GET'
-    })
+    
   },
   getUserInfo: function(e) {
     console.log(e)
