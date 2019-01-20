@@ -120,13 +120,14 @@ Page {
 }
 
 .card .image {
-  width: 100%;
-  height: 345rpx;
+  width: 750rpx;
+  height: 380rpx;
 }
 
 .card .image .img {
   width: 100%;
   height: 100%;
+  background-color: #D8CFCC;
 }
 
 .card .image .badge {
