@@ -23,7 +23,9 @@ Page({
             luck_activity_list = []
           }
         } = data
-        let list = luck_activity_list.map((item, idx)=>{
+        let list = luck_activity_list.filter((item, index) => {
+          return item.type == '10'
+        }).map((item, idx)=>{
           const { goods_img } = item;
           let img = goods_img.split(',')[0]
           return {
@@ -40,8 +42,40 @@ Page({
     })
   },
   onShow: function() {
+    setInterval(()=>{
+      this.refresh()
+    }, 30000)
     
   },
+  refresh: function() {
+    twx.request({
+      url: '/api/activity/query',
+      method: 'GET'
+    }).then((data) => {
+      if (data.code) {
+        const {
+          data: {
+            luck_activity_list = []
+          }
+        } = data
+        let list = luck_activity_list.filter((item, index)=>{
+          return item.type == '10'
+        }).map((item, idx) => {
+          const { goods_img } = item;
+          let img = goods_img.split(',')[0]
+          return {
+            ...item,
+            goods_img: getApp().globalData.config.image_url + '/' + img
+          }
+        })
+        this.setData({
+          activities: list
+        })
+      }
+    }).finally(() => {
+    })
+  },
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
