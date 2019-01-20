@@ -2,7 +2,7 @@
   <image src='{{userInfo.avatarUrl}}' class='image' mode='aspectFit'></image>
   <view class='name'>{{userInfo.nickName}}</view>
   <view class='wrapper'>
-    <view class='address'>收获地址</view>
+    <view class='address'>收货地址</view>
     <view class='arrow'></view>
   </view>
 </button>

@@ -2,6 +2,7 @@
   "navigationBarTitleText": "活动详情",
   "usingComponents": {
     "ts": "/pages/detail/components/tip-success",
+    "tp": "/pages/detail/components/tip-join",
     "share": "/component/share/share"
   }
 }

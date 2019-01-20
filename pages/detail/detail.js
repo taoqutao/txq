@@ -19,7 +19,9 @@ Page({
     members: [],
     lucky_members: [],
     userInfo: null,
-    shareInfo:{}
+    shareInfo:{},
+    prize_state: null,
+    showJoin: false
   },
 
   /**
@@ -27,9 +29,14 @@ Page({
    */
   onLoad: function(options) {
     this.data.activityId = options.id
+    this.request()
+  },
+
+  request: function() {
+    let activityId = this.data.activityId
     wx.showLoading()
     twx.request({
-      url: '/api/activity/query/' + `${options.id}`,
+      url: '/api/activity/query/' + activityId,
       method: 'GET',
     }).then(data => {
       if (data.code) {
@@ -68,12 +75,12 @@ Page({
           info
         })
       }
-    }).finally(()=>{
+    }).finally(() => {
       wx.hideLoading()
     })
 
     // twx.request({
-    //   url: '/api/activity/user/join/' + `${options.id}`,
+    //   url: '/api/activity/user/join/' + 'activityId',
     //   method: 'GET'
     // }).then((data) => {
     //   if (data.code) {
@@ -87,13 +94,13 @@ Page({
     // })
     //参与活动列表
     twx.request({
-      url: '/api/activity/order/' + `${options.id}`,
+      url: '/api/activity/order/' + activityId,
       method: 'GET'
     }).then((res) => {
       if (res.code) {
-        const {data : {
+        const { data: {
           orders = []
-        } = {}} = res
+        } = {} } = res
         let list = orders.slice(0, 8)
         this.setData({
           members: list
@@ -102,7 +109,7 @@ Page({
     })
     //中奖订单
     twx.request({
-      url: '/api/activity/order/prize/' + `${options.id}`,
+      url: '/api/activity/order/prize/' + activityId,
       method: 'GET'
     }).then((res) => {
       if (res.code) {
@@ -112,6 +119,16 @@ Page({
         let list = orders.slice(0, 8)
         this.setData({
           lucky_members: list
+        })
+      }
+    })
+    twx.request({
+      url: '/api/activity/user/prize/' + activityId,
+      method: 'GET'
+    }).then((data)=>{
+      if(data.code) {
+        this.setData({
+          prize_state: data.data.user_prize
         })
       }
     })
@@ -232,7 +249,12 @@ Page({
         }
         throw '同步失败'
       }).then((data) => {
-        console.log(data)
+        if(data.code) {
+          this.request()
+          this.setData({
+            showJoin: true
+          })
+        }
       }).catch(() => {
         wx.showToast({
           title: '参与失败',
@@ -266,9 +288,9 @@ Page({
       })
     }
   },
-  tapToast: function(e) {
-    wx.switchTab({
-      url: '/index/index'
+  tapJoin: function() {
+    this.setData({
+      showJoin: false
     })
   }
 })

@@ -30,6 +30,20 @@ Component({
       })
     },
     tapBtn: function(e) {
+      switch (this.data.type) {
+        case '0':
+        break;
+        case '2':
+          wx.switchTab({
+            url: '/pages/index/index'
+          })
+          break;
+        case '1':
+          wx.switchTab({
+            url: '/pages/index/index'
+          })
+          break;
+      }
       this.tapClose()
     },
   }

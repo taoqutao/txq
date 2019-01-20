@@ -128,7 +128,8 @@
 </view>
 
 <!-- ************* toast ************* -->
-<!-- <ts type='{{info.order_state}}' bindcustomEvent='tapToast'/> -->
+<ts type='{{prize_state}}'/>
+<tp wx:if='{{showJoin}}' bindcustomevent='tapJoin'/>
 <share wx:if='{{showShare}}' bindcustomEvent='tapShareButton' info='{{shareInfo}}'/>
 
 <view class='picker' wx:if='{{showPicker}}'>

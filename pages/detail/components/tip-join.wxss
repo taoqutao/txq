@@ -1,0 +1,98 @@
+/* pages/detail/components/tip-join.wxss */
+.ts-container {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.box {
+  background-color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+}
+
+.close {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 5rpx;
+  right: 5rpx;
+}
+
+.icon {
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.icon2 {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.title {
+  font-size: 35rpx;
+  font-family: PingFangSC-Semibold;
+}
+
+.description {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+
+.description .t1 {
+  color: black;
+}
+
+.description .t2 {
+  color: #ed6059;
+}
+
+.description2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #777777;
+}
+
+.btn {
+  font-size: 25rpx;
+  color: white;
+  width: 518rpx;
+  height: 84rpx;
+  background-color: #ed6059;
+  border-radius: 42rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reward {
+  width: 453rpx;
+  height: 150rpx;
+}
+
+.reward {
+  width: 453rpx;
+  height: 150rpx;
+  margin: 30rpx 30rpx 30rpx 30rpx;
+}
