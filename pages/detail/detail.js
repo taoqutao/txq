@@ -103,7 +103,8 @@ Page({
         } = {} } = res
         let list = orders.slice(0, 8)
         this.setData({
-          members: list
+          members: list,
+          members_count = orders.count
         })
       }
     })

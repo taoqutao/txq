@@ -96,7 +96,7 @@
 
 <view class='item5'>  
   <view class='description' bindtap='tapCheckAll'>
-    <text>{{'已有'+ info.members_count + '人参与，'}}</text>
+    <text>{{'已有'+ members_count + '人参与，'}}</text>
     <text class='tt'>查看全部</text>
     <view class='arrow'></view>
   </view>
