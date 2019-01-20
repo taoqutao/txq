@@ -269,7 +269,7 @@ Page {
 .item3-container .item3-img {
   width: 100%;
   height: 370rpx;
-  background-color: red;
+  background-color: #f0eff3;
   margin-bottom: 20rpx;
 }
 
@@ -299,6 +299,19 @@ Page {
   align-items: center;
   justify-content: center;
   background-color: white;
+}
+
+.item4 .title {
+  width: 100%;
+  height: 105rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  border-bottom: 4rpx solid #F2F2F2;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 30rpx;
 }
 
 .item4 .card {
@@ -404,6 +417,7 @@ Page {
   height: 4rpx;
   background-color: #e0e0e0;
   margin-top: 75rpx;
+  margin-bottom: 20rpx;
 }
 
 .item6 {
@@ -416,7 +430,6 @@ Page {
   width: 100%;
   height: 90rpx;
   background-color: white;
-  border-top: 4rpx solid #e0e0e0;
 }
 
 .item7 .button {
@@ -472,4 +485,29 @@ border:none;
 .item8 .done .tt {
   font-size: 40rpx;
   font-family: PingFangSC-Semibold;
+}
+
+.picker {
+  width: 730rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+
+.picker .item {
+  width: 100%;
+  height: 80rpx;
+  font-size: 34rpx;
+  background-color: white;
+  border-radius: 0;
+}
+
+.picker .item::after {
+  border: none;
+  border-radius: 0;
 }

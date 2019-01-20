@@ -67,6 +67,10 @@ Page({
    * Called when user click on the top right corner to share
    */
   onShareAppMessage: function () {
+    return {
+      title: '送你一份优选好物免费领取福利！',
+      imageUrl: '/images/share.jpg'
+    }
 
   },
   jump: function(e) {

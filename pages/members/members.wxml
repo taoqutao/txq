@@ -1,8 +1,8 @@
 <!--pages/members/members.wxml-->
-<block wx:for='{{[1, 2, 3]}}'>
+<block wx:for='{{members}}'>
   <view class='item'>
-    <image src='' class='icon' mode='aspectFit'></image>
-    <text class='t1'>abcd</text>
+    <image src='{{item.avatar_url}}' class='icon' mode='aspectFit'></image>
+    <text class='t1'>{{item.nick_name}}</text>
     <view class='item-wrapper'>
       <text class='t2'>2012</text>
     </view>

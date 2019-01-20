@@ -29,7 +29,7 @@ function __createHeader(header) {
     var selfCookie = _header.Cookie;
     selfCookie && (headerCookie += selfCookie);
     if (!_header['content-type']) {
-      // _header['content-type'] = 'application/x-www-form-urlencoded';
+      _header['content-type'] = 'application/x-www-form-urlencoded';
     }
     _header["UserAgent"] = "tqt-servicewechat";
     _header["wechatAppId"] = twx.appId;

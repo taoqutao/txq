@@ -15,17 +15,19 @@ Page({
     info: {},
     showTip: true,
     showShare: false,
+    showPicker: false,
     members: [],
     lucky_members: [],
-    userInfo: null
+    userInfo: null,
+    shareInfo:{}
   },
 
   /**
    * Lifecycle function--Called when page load
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.data.activityId = options.id
-
+    wx.showLoading()
     twx.request({
       url: '/api/activity/query/' + `${options.id}`,
       method: 'GET',
@@ -35,7 +37,7 @@ Page({
         let d = data.data.activity
 
         info.members_count = data.data.total_count
-        info.order_state = data.data.user_join
+        info.order_state = data.data.user_join //只表示用户是否参与
         info.name = d.goods_name + ' x ' + d.goods_count
         info.state = new Date(d.end_time).getTime() - new Date().getTime()
         info.description = info.activity_desc
@@ -44,9 +46,9 @@ Page({
         info.amount = d.amount
         info.author = d.mobile
         info.sponsor = d.shop_name
-        info.imgs = d.goods_img.split(',').filter((item, idex)=>{
+        info.imgs = d.goods_img.split(',').filter((item, idex) => {
           return !!item
-        }).map((item, idx)=>{
+        }).map((item, idx) => {
           return getApp().globalData.config.image_url + item
         }) || []
         info.activity_imgs = d.activity_img.split(',').filter((item, idex) => {
@@ -54,7 +56,11 @@ Page({
         }).map((item, idx) => {
           return getApp().globalData.config.image_url + item
         }) || []
-        let map = getApp().globalData.config.activity_status || { 10: '进行中', 20: '已结束', 30: '已取消'}
+        let map = getApp().globalData.config.activity_status || {
+          10: '进行中',
+          20: '已结束',
+          30: '已取消'
+        }
         let process = map[parseInt(d.type)]
         info.processName = process
         info.process = d.type
@@ -62,6 +68,8 @@ Page({
           info
         })
       }
+    }).finally(()=>{
+      wx.hideLoading()
     })
 
     // twx.request({
@@ -81,23 +89,39 @@ Page({
     twx.request({
       url: '/api/activity/order/' + `${options.id}`,
       method: 'GET'
-    }).then((data)=>{
-      console.log(data)
+    }).then((res) => {
+      if (res.code) {
+        const {data : {
+          orders = []
+        } = {}} = res
+        let list = orders.slice(0, 8)
+        this.setData({
+          members: list
+        })
+      }
     })
     //中奖订单
     twx.request({
       url: '/api/activity/order/prize/' + `${options.id}`,
       method: 'GET'
-    }).then((data) => {
-      console.log(data)
+    }).then((res) => {
+      if (res.code) {
+        const { data: {
+          orders = []
+        } = {} } = res
+        let list = orders.slice(0, 8)
+        this.setData({
+          lucky_members: list
+        })
+      }
     })
   },
 
   /**
    * Lifecycle function--Called when page is initially rendered
    */
-  onReady: function () {
-    setTimeout(()=>{
+  onReady: function() {
+    setTimeout(() => {
       this.tapTip()
     }, 3000)
   },
@@ -105,47 +129,54 @@ Page({
   /**
    * Lifecycle function--Called when page show
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * Lifecycle function--Called when page hide
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * Lifecycle function--Called when page unload
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * Page event handler function--Called when user drop down
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * Called when page reach bottom
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * Called when user click on the top right corner to share
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function() {
+    this.setData({
+      showPicker: false
+    })
+    return {
+      title: this.data.info.author + '送你免费' + this.data.info.name + '抽奖福利',
+      imageUrl: this.data.info.goods_img[0] || ''
+    }
   },
+
   tapCheckAll: function(e) {
     wx.navigateTo({
-      url: '/pages/members/members?' + '${this.data.activityId}',
+      url: '/pages/members/members?activityId=' + this.data.activityId,
     })
   },
   tapTip: function(e) {
@@ -171,22 +202,26 @@ Page({
   },
   tapShare: function(e) {
     this.setData({
-      showShare: true
+      showPicker: true
     })
   },
-  tapDo: function (e) {
+  tapDo: function(e) {
     if (e.detail.userInfo) {
-      const { gender, nickName, avatarUrl } = e.detail.userInfo
+      const {
+        gender,
+        nickName,
+        avatarUrl
+      } = e.detail.userInfo
       twx.request({
         url: '/api/user/modify',
         data: {
           sex: gender,
-          nickName: nickName,
+          nick_name: nickName,
           avatar_url: avatarUrl
         }
-      }).then((data)=>{
+      }).then((data) => {
         return !!data.code
-      }).then((isSynchronized)=>{
+      }).then((isSynchronized) => {
         if (isSynchronized) {
           return twx.request({
             url: '/api/order/add',
@@ -196,7 +231,7 @@ Page({
           })
         }
         throw '同步失败'
-      }).then((data)=>{
+      }).then((data) => {
         console.log(data)
       }).catch(() => {
         wx.showToast({
@@ -208,5 +243,32 @@ Page({
     } else {
 
     }
+  },
+  tapPictureShare: function(e) {  
+    if (e.detail.userInfo) {
+      const { avatarUrl, nickName} = e.detail.userInfo
+      const { startTime, name, imgs} = this.data.info
+      this.setData({
+        showPicker: false,
+        showShare: true,
+        shareInfo: { 
+          avatarUrl,
+          nickName, 
+          time: startTime +' 自动开奖',
+          des: '奖品：' + name,
+          image: imgs[0]
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '授权失败',
+        icon: 'none'
+      })
+    }
+  },
+  tapToast: function(e) {
+    wx.switchTab({
+      url: '/index/index'
+    })
   }
 })

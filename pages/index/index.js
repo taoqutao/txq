@@ -7,7 +7,7 @@ const app = getApp()
 Page({
   data: {
     imgUrls: [
-      '/images/banner.jpg',
+      '/images/banner.png',
     ],
     activities: []
   },

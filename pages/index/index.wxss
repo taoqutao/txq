@@ -10,7 +10,7 @@ Page {
 
 .header {
   width: 100%;
-  height: 289rpx;
+  height: 272rpx;
 }
 
 .header .banner-img {

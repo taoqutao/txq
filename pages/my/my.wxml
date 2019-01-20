@@ -20,13 +20,13 @@
     <text class='t2'>中奖记录</text>
   </view>
 </view>
-<view class="space item3">
+<button class="space item3" open-type='share'>
   <image class='icon' src='/images/share.png' mode='aspectFit'></image>
   <text class='title'>分享给好友</text>
   <view class='wrapper'>
     <view class='arrow'></view>
   </view>
-</view>
+</button>
 <view class="item3" bindtap='jump' id='2'>
   <image class='icon' src='/images/help.png' mode='aspectFit'></image>
   <text class='title'>帮助中心</text>
@@ -41,3 +41,5 @@
     <view class='arrow'></view>
   </view>
 </view>
+
+<share wx:if='{{showShare}}' bindcustomEvent='tapShareButton' info='{{shareInfo}}'/>

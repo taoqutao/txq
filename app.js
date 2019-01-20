@@ -12,6 +12,12 @@ App({
         this.globalData.config = data.data;
       }
     })
+
+    wx.getUserInfo({
+      success: (res) => {
+        this.globalData.userInfo = res.userInfo
+      }
+    })
   },
   globalData: {
     userInfo: null

@@ -1,1 +1,6 @@
-{}
+{
+  "navigationBarTitleText": "淘趣星球",
+  "usingComponents": {
+    "share": "/component/share/share"
+  }
+}

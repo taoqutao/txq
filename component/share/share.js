@@ -9,7 +9,7 @@ Component({
   properties: {
     info: {
       type : Object,
-      value: {avatarUrl:'', nickName: '', time: 'xxx 自动开奖', des: '奖品： xxxxx'}
+      value: {avatarUrl:'', image:'', nickName: '', time: '', des: ''}
     }
   },
 
@@ -108,7 +108,7 @@ Component({
       ctx.setTextAlign('left')
       ctx.setFillStyle('#000000')
       ctx.setFontSize(14)
-      ctx.fillText(this.data.info.time, 20, 250)
+      ctx.fillText(this.data.info.des, 20, 250)
       ctx.stroke()
 
       ctx.setTextAlign('center')
@@ -198,13 +198,13 @@ Component({
     getImageRequestPromises: function () {
       let getImageInfoPromisify = this.wxPromisify(wx.getImageInfo)
       let p1 = getImageInfoPromisify({
-        src: app.globalData.userInfo.avatarUrl
+        src: this.data.info.avatarUrl
       })
       let p2 = getImageInfoPromisify({
         src: '/images/reward.png'
       })
       let p3 = getImageInfoPromisify({
-        src: '/component/share/code.png'
+        src: '/component/share/code.jpg'
       })
       return [p1, p2, p3]
     },

@@ -9,18 +9,30 @@ Page({
    * Page initial data
    */
   data: {
-    userInfo: null
+    userInfo: null,
+    members: []
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) { 
+    wx.showLoading()
     twx.request({
       url: '/api/activity/order/' + `${options.activityId}`,
       method: 'GET'
-    }).then((data) => {
-      console.log(data)
+    }).then((res) => {
+      if (res.code) {
+        const { data: {
+          orders = []
+        } = {} } = res
+        let list = orders.slice(0, 8)
+        this.setData({
+          members: list
+        })
+      }
+    }).finally(()=>{
+      wx.hideLoading()
     })
   },
 
