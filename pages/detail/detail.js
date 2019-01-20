@@ -47,7 +47,7 @@ Page({
         info.order_state = data.data.user_join //只表示用户是否参与
         info.name = d.goods_name + ' x ' + d.goods_count
         info.state = new Date(d.end_time).getTime() - new Date().getTime()
-        info.description = info.activity_desc
+        info.description = d.activity_desc
         info.rewardCount = d.goods_count
         info.startTime = d.end_time
         info.amount = d.amount
@@ -56,12 +56,12 @@ Page({
         info.imgs = d.goods_img.split(',').filter((item, idex) => {
           return !!item
         }).map((item, idx) => {
-          return getApp().globalData.config.image_url + item
+          return getApp().globalData.config.image_url + '/' + item
         }) || []
         info.activity_imgs = d.activity_img.split(',').filter((item, idex) => {
           return !!item
         }).map((item, idx) => {
-          return getApp().globalData.config.image_url + item
+          return getApp().globalData.config.image_url + '/' + item
         }) || []
         let map = getApp().globalData.config.activity_status || {
           10: '进行中',

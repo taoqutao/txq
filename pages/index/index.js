@@ -28,7 +28,7 @@ Page({
           let img = goods_img.split(',')[0]
           return {
             ...item,
-            goods_img: getApp().globalData.config.image_url + img
+            goods_img: getApp().globalData.config.image_url + '/' + img
           }
         })
         this.setData({
