@@ -245,7 +245,8 @@ Page({
           return twx.request({
             url: '/api/order/add',
             data: {
-              activity_id: this.data.activityId
+              activity_id: this.data.activityId,
+              form_id: this.data.formId
             }
           })
         }
@@ -308,5 +309,8 @@ Page({
       favorite_url: ufo,
       info: info
     })
+  },
+  submitInfo: function(e) {
+    this.data.formId = e.detail.formId
   }
 })

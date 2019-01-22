@@ -93,7 +93,10 @@
       <image src='/images/planet.png' class='item5-image' mode='aspectFit'></image>
       <text class='done-tt'>参与成功，待开奖～</text>
     </view>
-    <button form-type="submit" class='do' wx:else open-type='getUserInfo' bindgetuserinfo='tapDo'>参与抽奖</button>
+    
+    <form wx:else bindsubmit="submitInfo" report-submit='true' >
+      <button form-type="submit" type="default" class='do'  open-type='getUserInfo' bindgetuserinfo='tapDo'>参与抽奖</button>
+    </form>
   </view>
 
   <view class='item5'>
