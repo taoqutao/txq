@@ -12,7 +12,7 @@ Page({
     imgUrls: [
       '/images/banner.jpg',
     ],
-    info: {},
+    info: null,
     showTip: true,
     showShare: false,
     showPicker: false,
@@ -21,7 +21,8 @@ Page({
     userInfo: null,
     shareInfo:{},
     prize_state: null,
-    showJoin: false
+    showJoin: false,
+    favorite_url: '/images/ufo.png'
   },
 
   /**
@@ -188,7 +189,7 @@ Page({
     })
     return {
       title: this.data.info.author + '送你免费' + this.data.info.name + '抽奖福利',
-      imageUrl: this.data.info.goods_img[0] || ''
+      imageUrl: this.data.info.imgs[0] || ''
     }
   },
 
@@ -292,6 +293,20 @@ Page({
   tapJoin: function() {
     this.setData({
       showJoin: false
+    })
+  },
+  tapFavotite: function(e) {
+    let ufo = '/images/ufo.png'
+    let amount = this.data.info.amount - 1
+    if (this.data.favorite_url == '/images/ufo.png') {
+      ufo = '/images/ufo_highlight.png'
+      amount = this.data.info.amount + 1
+    }
+    let info = this.data.info
+    info.amount = amount
+    this.setData({
+      favorite_url: ufo,
+      info: info
     })
   }
 })

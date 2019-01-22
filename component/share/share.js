@@ -72,7 +72,7 @@ Component({
 
       let w2 = res2.width * 0.2
       let h2 = res2.height * 0.2
-      let path2 = '/' + res2.path
+      let path2 = res2.path
 
       let w3 = res3.width
       let h3 = res3.height
@@ -201,7 +201,7 @@ Component({
         src: this.data.info.avatarUrl
       })
       let p2 = getImageInfoPromisify({
-        src: '/images/reward.png'
+        src: this.data.info.image
       })
       let p3 = getImageInfoPromisify({
         src: '/component/share/code.jpg'

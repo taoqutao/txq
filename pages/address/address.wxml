@@ -4,16 +4,16 @@
 </view>
 <view class='item'>
   <text class='t1'>联系人</text>
-  <input class='input' placeholder='名字'></input>
+  <input class='input' placeholder='名字' bindinput='inputChange' id='0' value='{{info.name}}'></input>
 </view>
 <view class='item'>
   <text class='t1'>手机号</text>
-  <input class='input' placeholder='11位手机号'></input>
+  <input class='input' placeholder='11位手机号' bindinput='inputChange' id='1' value='{{info.phone}}'></input>
 </view>
 <view class='item'>
   <text class='t1'>详细地址</text>
-  <textarea class='input' placeholder='详细地址' auto-height='true'></textarea>
+  <textarea class='input' placeholder='详细地址' auto-height='true' bindinput='inputChange' id='2' value='{{info.address}}'></textarea>
   <image src='/images/location.png' class='image' mode='aspectFit'></image>
 </view>
 
-<view class='btn'>完成</view>
+<view class='btn' bindtap='tapDone'>完成</view>

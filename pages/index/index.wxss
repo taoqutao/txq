@@ -10,7 +10,7 @@ Page {
 
 .header {
   width: 100%;
-  height: 272rpx;
+  height: 238rpx;
 }
 
 .header .banner-img {
@@ -127,7 +127,7 @@ Page {
 .card .image .img {
   width: 100%;
   height: 100%;
-  background-color: #D8CFCC;
+  background-color: white;
 }
 
 .card .image .badge {
@@ -148,13 +148,13 @@ Page {
 .card .image .badge .badge-description {
   margin-left: 20rpx;
   color: white;
-  font-family: PingFangSC-Thin;
+  /* font-family: PingFangSC-Thin; */
 }
 
 .card .name {
   font-size: 38rpx;
   margin: 20rpx 0 20rpx 20rpx;
-  font-family: PingFangSC-Thin;
+  /* font-family: PingFangSC-Thin; */
 }
 
 .card .card-wrapper {
@@ -197,7 +197,7 @@ Page {
   width: 168rpx;
   height: 48rpx;
   color: white;
-  border-radius: 10rpx;
+  border-radius: 24rpx;
   
 }
 

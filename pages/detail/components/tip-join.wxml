@@ -1,7 +1,7 @@
 <!--pages/detail/components/tip-join.wxml-->
 <view class='ts-container' catchtap=''>
   <view class='box'>
-    <view class='close' bindtap='tapClose'>X</view>
+    <image src='/images/close.jpg' class='close' bindtap='tapClose'></image>
     <image class='icon' src='/images/planet.png' mode='aspectFit' style='margin-top:40rpx;'></image>
     <view class='title' style='margin-top: 25rpx;'>参与成功</view>
     <view class='description' style='margin-top: 30rpx;'>

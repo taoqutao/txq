@@ -44,7 +44,8 @@ Page {
 }
 
 .tip .tip-container .close {
-  font-size: 40rpx;
+  width: 30rpx;
+  height: 30rpx;
   margin-right: 20rpx;
 }
 
@@ -60,7 +61,7 @@ Page {
 .header .banner-img {
   width: 100%;
   height: 100%;
-  background-color: #D8CFCC;
+  background-color: white;
 }
 
 .card {
@@ -76,9 +77,8 @@ Page {
 }
 
 .card .name {
-  font-size: 50rpx;
+  font-size: 38rpx;
   margin: 38rpx 0 30rpx 30rpx;
-  font-family: PingFangSC-Thin;
 }
 
 .card .card-wrapper {
@@ -150,8 +150,7 @@ Page {
 
 .card .line {
   background-color: #e0e0e0;
-  width: 730rpx;
-  margin-left: 20rpx;
+  width: 100%;
   height: 4rpx;
 }
 
@@ -171,13 +170,13 @@ Page {
   align-items: center;
   justify-content: flex-end;
   margin-left: 30rpx;
-  width: 40rpx;
-  height: 40rpx;
+  width: 30rpx;
+  height: 30rpx;
   margin-right: 20rpx;
 }
 
 .card .bottom .bottom-txt {
-  font-size: 35rpx;
+  font-size: 30rpx;
   color: #6b6b6b;
   font-family: PingFangSC-Thin;
 }
@@ -189,7 +188,6 @@ Page {
   align-items: center;
   justify-content: flex-end;
   margin-right: 40rpx;
-  font-size: 30rpx;
   color: #6b6b6b;
   font-family: PingFangSC-Thin;
 }
@@ -235,7 +233,7 @@ Page {
   width: 710rpx;
   height: 360rpx;
   margin-bottom: 20rpx;
-  background-color: #D8CFCC;
+  background-color: white;
 }
 
 .item3 {
@@ -271,15 +269,14 @@ Page {
 .item3-container .item3-img {
   width: 710rpx;
   height: 360rpx;
-  background-color: #D8CFCC;
+  background-color: white;
   margin-bottom: 20rpx;
 }
 
 .item3-container .item3-description {
-  border-top: 4rpx solid #e0e0e0;
   margin-top: 38rpx;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -415,7 +412,7 @@ Page {
 }
 
 .item5 .line {
-  width: 710rpx;
+  width: 100%;
   height: 4rpx;
   background-color: #e0e0e0;
   margin-top: 75rpx;
@@ -432,6 +429,9 @@ Page {
   width: 100%;
   height: 90rpx;
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .item7 .button {

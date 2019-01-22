@@ -4,7 +4,7 @@
     <image src='{{item.avatar_url}}' class='icon' mode='aspectFit'></image>
     <text class='t1'>{{item.nick_name}}</text>
     <view class='item-wrapper'>
-      <text class='t2'>2012</text>
+      <text class='t2'>{{item.create_time}}</text>
     </view>
   </view>
 </block>

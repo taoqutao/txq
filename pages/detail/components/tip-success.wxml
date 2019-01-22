@@ -1,7 +1,7 @@
 <!--pages/detail/coponents/tip-success.wxml-->
 <view class='ts-container' catchtap='' wx:if="{{type && type !== '0'}}">
   <view class='box'>
-    <view class='close' bindtap='tapClose'>X</view>
+    <image src='/images/close.jpg' class='close' bindtap='tapClose'></image>
     <block wx:if="{{type === '2' }}">
       <image class='icon' src='/images/ice-cream.png' mode='aspectFit' style='margin-top:40rpx;'></image>
       <view class='title' style='margin-top: 25rpx;'>您与奖品擦肩而过</view>
