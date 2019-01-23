@@ -1,14 +1,14 @@
 <!--pages/record/record.wxml-->
 
 <view class='container'>
-  <block wx:for='{{[1,2,3]}}'>
-    <view class='card'>
+  <block wx:for='{{list}}'>
+    <view class='card' id='{{item.id}}' bindtap='tapCard'>
       <image src='' class='image' mode='aspectFit'></image>
       <view class='box'>
-        <text class='t1'>{{'奖品：'+'小米手环X1'}}</text>
+        <text class='t1'>{{'奖品：'+ item.name}}</text>
         <view class='wrapper'>
-          <image src='/images/people.png' class='icon' mode='aspectFit'></image>
-          <text class='t2'>{{'参与人数：'+'1234' + '人'}}</text>
+          <!-- <image src='/images/people.png' class='icon' mode='aspectFit'></image>
+          <text class='t2'>{{'参与人数：'+'1234' + '人'}}</text> -->
         </view>
       </view>
       <view class='button'>已结束</view>

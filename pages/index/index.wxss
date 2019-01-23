@@ -9,8 +9,8 @@ Page {
 }
 
 .header {
-  width: 100%;
-  height: 238rpx;
+  width: 750rpx;
+  height: 239rpx;
 }
 
 .header .banner-img {

@@ -9,7 +9,7 @@ Component({
   properties: {
     info: {
       type : Object,
-      value: {avatarUrl:'', image:'', nickName: '', time: '', des: ''}
+      value: {avatarUrl:'', image:'', nickName: '', time: '', des: '', title: ''}
     }
   },
 
@@ -86,7 +86,7 @@ Component({
       // 背景图
       ctx.drawImage(path1, 100, 10, 40, 40)
       // 二维码
-      ctx.drawImage(path2, 60, 145, 120, 80)
+      ctx.drawImage(path2, 25, 135, 180, 91)
       // 商品图
       ctx.drawImage(path3, 80, 260, 80, 80)
 
@@ -94,11 +94,11 @@ Component({
       ctx.setFillStyle('#ffffff')
 
       ctx.setFontSize(14)
-      ctx.fillText(getApp().globalData.userInfo.nickName, 120, 70)
+      ctx.fillText(this.data.info.nickName, 120, 70)
       ctx.stroke()
 
       ctx.setFontSize(16)
-      ctx.fillText('送你一次免费抽奖福利', 120, 90)
+      ctx.fillText(this.data.info.title, 120, 90)
       ctx.stroke()
 
       ctx.setFontSize(10)

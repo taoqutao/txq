@@ -1,4 +1,8 @@
 // pages/record/record.js
+import {
+  twx
+} from '../../twx/twx.js'
+
 Page({
 
   /**
@@ -12,6 +16,31 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    twx.request({
+      url: '/api/order/query',
+      method: 'GET'
+    }).then((data)=>{
+      if (data.code) {
+        let map = getApp().globalData.config.activity_status || {
+          10: '进行中',
+          20: '已结束',
+          30: '已取消'
+        }
+        
+        let list = data.data.map((item, index)=>{
+          let state = map[parseInt(item.status)]
+          return {
+            id: item.activity_id,
+            name: '',
+            count: '',
+            state: state
+          }
+        })
+        this.setData({
+          list: list
+        })
+      } 
+    })
 
   },
 
@@ -62,5 +91,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  tapCard: function(e) {
+    const { id } = e.currentTarget
+    wx.navigateTo({
+      url: '/pages/detail/detail?id=' + `${id}`,
+    })
   }
 })

@@ -7,7 +7,7 @@
     <view class='description' style='margin-top: 30rpx;'>
       <text class='t1'>关注</text>
       <text class='t2'>【淘趣星球】</text>
-      <text class='t1'>公众号，不错过中间通知</text>
+      <text class='t1'>公众号，不错过中奖通知</text>
     </view>
     <view class='btn' bindtap='tapClose' style='margin: 39rpx 50rpx 20px 50rpx;'>
       <text>好的</text>

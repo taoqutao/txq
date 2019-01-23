@@ -1,7 +1,7 @@
 <swiper class='header' indicator-dots='{{imgUrls.length > 1}}' autoplay='true' interval="4000" duration="2000">
   <block wx:for="{{imgUrls}}">
     <swiper-item>
-      <image src="{{item}}" class="banner-img" mode="aspectFit" />
+      <image src="{{item}}" class="banner-img" mode="aspectFill" />
     </swiper-item>
   </block>
 </swiper>
@@ -37,13 +37,13 @@
           <view class='date'>自动开奖</view>
         </view>
         <view class='button'>
-          <block wx:if="{{index%2===0}}">
+          <block>
             <view class='done'>立即参与</view>
           </block>
-          <block wx:else>
+          <!-- <block wx:else>
             <image src='/images/planet.png' class='card-button-icon' mode='aspectFit'></image>
             <view class='description'>参与成功～</view>
-          </block>
+          </block> -->
         </view>
       </view>
     </block>

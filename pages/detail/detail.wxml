@@ -48,9 +48,9 @@
         <text class='tt'>{{'奖品数量：' + info.rewardCount}}</text>
         <text class='tt' style='margin-left:80rpx'>{{'奖品名额：' + info.rewardCount}}</text>
       </view>
-      <text class='tt' style='margin-bottom: 20rpx'>{{info.description}}</text>
+      <text bindlongtap='tapDescription' class='tt' style='margin-bottom: 20rpx'>{{info.description}}</text>
       <block wx:for="{{info.activity_imgs}}">
-        <image src='{{item}}' class='item2-img' mode='aspectFill'></image>
+        <image src='{{item}}' class='item2-img' mode='widthFix'></image>
       </block>
     </view>
   </view>
@@ -115,7 +115,7 @@
   </view>
 
   <!-- <view class='item6'></view> -->
-
+·
   <view class='item7'>
     <view class='button' bindtap='tapShare'>分享给好友</view>
   </view>

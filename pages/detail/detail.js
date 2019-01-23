@@ -188,7 +188,7 @@ Page({
       showPicker: false
     })
     return {
-      title: this.data.info.author + '送你免费' + this.data.info.name + '抽奖福利',
+      title: this.data.info.author + '送你免费 ' + this.data.info.name + ' 抽奖福利',
       imageUrl: this.data.info.imgs[0] || ''
     }
   },
@@ -272,7 +272,15 @@ Page({
   tapPictureShare: function(e) {  
     if (e.detail.userInfo) {
       const { avatarUrl, nickName} = e.detail.userInfo
-      const { startTime, name, imgs} = this.data.info
+      const { startTime, name, imgs, author} = this.data.info
+      let title = author + '送你免费 ' + name + ' 抽奖福利'
+      let des = '奖品：' + name
+      if (title.length > 18) {
+        title = title.slice(0, 18) + '...'
+      }
+      if (des.length > 14) {
+        des = des.slice(0, 14) + '...'
+      }
       this.setData({
         showPicker: false,
         showShare: true,
@@ -280,8 +288,9 @@ Page({
           avatarUrl,
           nickName, 
           time: startTime +' 自动开奖',
-          des: '奖品：' + name,
-          image: imgs[0]
+          des: des,
+          image: imgs[0],
+          title: title
         }
       })
     } else {
@@ -312,5 +321,17 @@ Page({
   },
   submitInfo: function(e) {
     this.data.formId = e.detail.formId
+  },
+
+  tapDescription: function(e) {
+    wx.setClipboardData({
+      data: this.data.info.description,
+      success: function (res) {
+        wx.showToast({
+          title: '复制成功',
+          icon: 'none'
+        })
+      }
+    })
   }
 })
