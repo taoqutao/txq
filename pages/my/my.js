@@ -10,7 +10,8 @@ Page({
       nickName: '点击登录',
       avatarUrl: '/images/ufo.png'
     },
-    joined_count: 0
+    joined_count: 0,
+    prized_count: 0
   },
 
   /**
@@ -42,11 +43,16 @@ Page({
       if (data.code) {
         const {
           data: {
-            total_count = 0
+            total_count = 0,
+            orders = []
           } = {}
         } = data
+        let prized_count = orders.filter((item, index)=> {
+          return item.order_status == '1'
+        }).length;
         this.setData({
-          joined_count: total_count
+          joined_count: total_count,
+          prized_count
         })
       }
     })
@@ -114,6 +120,9 @@ Page({
         break;
       case '3':
         url = '/pages/contact/contact'
+        break;
+      case '4':
+        url = '/pages/record/record?state=1'
         break;
     }
     wx.navigateTo({

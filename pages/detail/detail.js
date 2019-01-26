@@ -19,10 +19,9 @@ Page({
     members: [],
     lucky_members: [],
     userInfo: null,
-    shareInfo:{},
+    shareInfo: {},
     prize_state: null,
     showJoin: false,
-    isFavorite: 0
   },
 
   /**
@@ -44,6 +43,8 @@ Page({
         let info = {}
         let d = data.data.activity
 
+        info.isFavorite = data.data.user_point
+        info.prize_state = data.data.user_prize
         info.members_count = data.data.total_count
         info.order_state = data.data.user_join //只表示用户是否参与
         info.name = d.goods_name + ' x ' + d.goods_count
@@ -54,6 +55,7 @@ Page({
         info.amount = d.amount
         info.author = d.mobile
         info.sponsor = d.shop_name
+        info.goods_name = d.goods_name
         info.imgs = d.goods_img.split(',').filter((item, idex) => {
           return !!item
         }).map((item, idx) => {
@@ -76,7 +78,7 @@ Page({
           info
         })
         let interval = new Date(info.startTime).getTime() - new Date().getTime()
-        interval > 0 && (this.data.timer = setTimeout(()=>{
+        interval > 0 && (this.data.timer = setTimeout(() => {
           clearTimeout(this.data.timer)
           this.request()
         }, interval))
@@ -104,9 +106,11 @@ Page({
       method: 'GET'
     }).then((res) => {
       if (res.code) {
-        const { data: {
-          orders = []
-        } = {} } = res
+        const {
+          data: {
+            orders = []
+          } = {}
+        } = res
         let list = orders.slice(0, 8)
         this.setData({
           members: list,
@@ -120,34 +124,36 @@ Page({
       method: 'GET'
     }).then((res) => {
       if (res.code) {
-        const { data: {
-          orders = []
-        } = {} } = res
+        const {
+          data: {
+            orders = []
+          } = {}
+        } = res
         let list = orders.slice(0, 8)
         this.setData({
           lucky_members: list
         })
       }
     })
-    twx.request({
-      url: '/api/activity/user/prize/' + activityId,
-      method: 'GET'
-    }).then((data)=>{
-      if(data.code) {
-        this.setData({
-          prize_state: data.data.user_prize
-        })
-      }
-    })
-    twx.request({
-      url: '/api/activity/user/point/' + activityId,
-    }).then((data)=>{
-      if (data.code) {
-        this.setData({
-          isFavorite: data.data.user_point
-        })
-      }
-    })
+    // twx.request({
+    //   url: '/api/activity/user/prize/' + activityId,
+    //   method: 'GET'
+    // }).then((data)=>{
+    //   if(data.code) {
+    //     this.setData({
+    //       prize_state: data.data.user_prize
+    //     })
+    //   }
+    // })
+    // twx.request({
+    //   url: '/api/activity/user/point/' + activityId,
+    // }).then((data) => {
+    //   if (data.code) {
+    //     this.setData({
+    //       isFavorite: data.data.user_point
+    //     })
+    //   }
+    // })
   },
 
   /**
@@ -266,7 +272,7 @@ Page({
         }
         throw '同步失败'
       }).then((data) => {
-        if(data.code) {
+        if (data.code) {
           this.request()
           this.setData({
             showJoin: true
@@ -283,10 +289,18 @@ Page({
 
     }
   },
-  tapPictureShare: function(e) {  
+  tapPictureShare: function(e) {
     if (e.detail.userInfo) {
-      const { avatarUrl, nickName} = e.detail.userInfo
-      const { startTime, name, imgs, author} = this.data.info
+      const {
+        avatarUrl,
+        nickName
+      } = e.detail.userInfo
+      const {
+        startTime,
+        name,
+        imgs,
+        author
+      } = this.data.info
       let title = '送你免费领取 ' + name + ' 福利!'
       let des = '奖品：' + name
       if (title.length > 14) {
@@ -298,10 +312,10 @@ Page({
       this.setData({
         showPicker: false,
         showShare: true,
-        shareInfo: { 
+        shareInfo: {
           avatarUrl,
-          nickName: '淘趣星球', 
-          time: startTime +' 自动开奖',
+          nickName: '淘趣星球',
+          time: startTime + ' 自动开奖',
           des: des,
           image: imgs[0],
           title: title
@@ -320,21 +334,22 @@ Page({
     })
   },
   tapFavotite: function(e) {
-    if (this.data.isFavorite == 1) {
+    if (this.data.info.isFavorite == 1) {
       return;
     }
     twx.request({
       url: '/api/activity/user/save/point/' + this.data.activityId,
-    }).then((data)=>{
-      if(data.code) {
+    }).then((data) => {
+      if (data.code) {
         let info = this.data.info
-        this.data.info.amount += this.data.info.amount
+        this.data.info.amount += 1
+        this.data.info.isFavorite = 1
         this.setData({
           info: info
         })
       }
     })
-    
+
   },
   submitInfo: function(e) {
     this.data.formId = e.detail.formId
@@ -343,7 +358,7 @@ Page({
   tapDescription: function(e) {
     wx.setClipboardData({
       data: this.data.info.description,
-      success: function (res) {
+      success: function(res) {
         wx.showToast({
           title: '复制成功',
           icon: 'none'

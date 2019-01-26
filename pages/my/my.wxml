@@ -15,8 +15,8 @@
     <text class='t1'>{{joined_count}}</text>
     <text class='t2'>参与抽奖</text>
   </view>
-  <view class='block'>
-    <text class='t1'>0</text>
+  <view class='block' bindtap='jump' id='4'>
+    <text class='t1'>{{prized_count}}</text>
     <text class='t2'>中奖记录</text>
   </view>
 </view>

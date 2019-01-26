@@ -1,7 +1,7 @@
 <!--pages/detail/detail.wxml-->
 <view hidden='{{ !info }}'>
   <view class='item1'>
-    <swiper class='header' indicator-dots='{{imgUrls.length > 1}}' autoplay='true' interval="5000" duration="2000">
+    <swiper class='header' indicator-dots='{{info.imgs.length > 1}}' autoplay='true' interval="5000" duration="2000" circular='true'>
       <block wx:for="{{info.imgs}}">
         <swiper-item>
           <image src="{{item}}" class="banner-img" mode="aspectFit" />
@@ -25,7 +25,7 @@
         <view class='date'>自动开奖</view>
       </view>
       <view class='button' bindtap='tapFavotite'>
-        <image src="{{isFavorite == 1 ?  '/images/ufo_highlight.png' : '/images/ufo.png'}}" class='card-button-icon' mode='aspectFit'></image>
+        <image src="{{info.isFavorite == 1 ?  '/images/ufo_highlight.png' : '/images/ufo.png'}}" class='card-button-icon' mode='aspectFit'></image>
         <view class='description'>{{info.amount}}</view>
       </view>
       <view class='line'></view>
@@ -78,9 +78,9 @@
     <block wx:for='{{lucky_members}}'>
       <view class='card'>
         <image src='{{item.avatar_url}}' class='icon' mode='aspectFit'></image>
-        <text class='t1'>{{avatar_url.nick_name}}</text>
+        <text class='t1'>{{item.nick_name}}</text>
         <view class='card-wrapper'>
-          <text class='t2'></text>
+          <text class='t2'>{{info.goods_name}}</text>
         </view>
       </view>
     </block>
@@ -88,7 +88,7 @@
 
   <!-- ************* item5 ************* -->
 
-  <view class='item8' wx:if="{{ info.order_state == 1 && info.process == 10 }}">
+  <view class='item8' wx:if="{{info.process == 10 }}">
     <view wx:if='{{info.order_state == 1}}' class='done'>
       <image src='/images/planet.png' class='item5-image' mode='aspectFit'></image>
       <text class='done-tt'>参与成功，待开奖～</text>
@@ -101,7 +101,7 @@
 
   <view class='item5'>
     <view class='description' bindtap='tapCheckAll'>
-      <text>{{'已有'+ members_count + '人参与，'}}</text>
+      <text>{{'已有'+ info.members_count + '人参与，'}}</text>
       <text class='tt'>查看全部</text>
       <view class='arrow'></view>
     </view>

@@ -16,8 +16,9 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function(options) {
+    const {state} = options;
     twx.request({
-      url: '/api/order/query',
+      url: '/api/order/query' + (state ? '?status=' + state : ''),
       method: 'GET'
     }).then((data) => {
       if (data.code) {
