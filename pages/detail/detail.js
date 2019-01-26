@@ -22,7 +22,7 @@ Page({
     shareInfo:{},
     prize_state: null,
     showJoin: false,
-    favorite_url: '/images/ufo.png'
+    isFavorite: 0
   },
 
   /**
@@ -69,12 +69,17 @@ Page({
           20: '已结束',
           30: '已取消'
         }
-        let process = map[parseInt(d.type)]
+        let process = map[parseInt(d.status)]
         info.processName = process
-        info.process = d.type
+        info.process = d.status
         this.setData({
           info
         })
+        let interval = new Date(info.startTime).getTime() - new Date().getTime()
+        interval > 0 && (this.data.timer = setTimeout(()=>{
+          clearTimeout(this.data.timer)
+          this.request()
+        }, interval))
       }
     }).finally(() => {
       wx.hideLoading()
@@ -134,6 +139,15 @@ Page({
         })
       }
     })
+    twx.request({
+      url: '/api/activity/user/point/' + activityId,
+    }).then((data)=>{
+      if (data.code) {
+        this.setData({
+          isFavorite: data.data.user_point
+        })
+      }
+    })
   },
 
   /**
@@ -188,8 +202,8 @@ Page({
       showPicker: false
     })
     return {
-      title: this.data.info.author + '送你免费 ' + this.data.info.name + ' 抽奖福利',
-      imageUrl: this.data.info.imgs[0] || ''
+      title: '送你免费领取 ' + this.data.info.name + ' 福利!',
+      path: '/pages/index/index?activitiId=' + `${this.data.activityId}`
     }
   },
 
@@ -273,10 +287,10 @@ Page({
     if (e.detail.userInfo) {
       const { avatarUrl, nickName} = e.detail.userInfo
       const { startTime, name, imgs, author} = this.data.info
-      let title = author + '送你免费 ' + name + ' 抽奖福利'
+      let title = '送你免费领取 ' + name + ' 福利!'
       let des = '奖品：' + name
-      if (title.length > 18) {
-        title = title.slice(0, 18) + '...'
+      if (title.length > 14) {
+        title = title.slice(0, 14) + '...'
       }
       if (des.length > 14) {
         des = des.slice(0, 14) + '...'
@@ -286,7 +300,7 @@ Page({
         showShare: true,
         shareInfo: { 
           avatarUrl,
-          nickName, 
+          nickName: '淘趣星球', 
           time: startTime +' 自动开奖',
           des: des,
           image: imgs[0],
@@ -306,18 +320,21 @@ Page({
     })
   },
   tapFavotite: function(e) {
-    let ufo = '/images/ufo.png'
-    let amount = this.data.info.amount - 1
-    if (this.data.favorite_url == '/images/ufo.png') {
-      ufo = '/images/ufo_highlight.png'
-      amount = this.data.info.amount + 1
+    if (this.data.isFavorite == 1) {
+      return;
     }
-    let info = this.data.info
-    info.amount = amount
-    this.setData({
-      favorite_url: ufo,
-      info: info
+    twx.request({
+      url: '/api/activity/user/save/point/' + this.data.activityId,
+    }).then((data)=>{
+      if(data.code) {
+        let info = this.data.info
+        this.data.info.amount += this.data.info.amount
+        this.setData({
+          info: info
+        })
+      }
     })
+    
   },
   submitInfo: function(e) {
     this.data.formId = e.detail.formId

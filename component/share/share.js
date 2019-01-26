@@ -17,10 +17,6 @@ Component({
    * 组件的初始数据
    */
   data: {
-    imgSize: {
-      width: 0,
-      height: 0
-    },
     tempFilePath:null,
     isImgLoaded:false
   },
@@ -48,15 +44,6 @@ Component({
       var imgs = []
       let promises = this.getImageRequestPromises()
       Promise.all(promises).then(function(res) {
-        let res1 = res[0]
-        let w1 = res1.width
-        let h1 = res1.height
-        that.setData({
-          imgSize: {
-            width: w1,
-            height: h1
-          }
-        })
         that.drawImage(res)
       })
     },
@@ -66,28 +53,23 @@ Component({
       let res2 = imgs[1]
       let res3 = imgs[2]
 
-      let w1 = res1.width
-      let h1 = res1.height
-      let path1 = res1.path
-
-      let w2 = res2.width * 0.2
-      let h2 = res2.height * 0.2
+      let path1 = '/' + res1.path
       let path2 = res2.path
-
-      let w3 = res3.width
-      let h3 = res3.height
       let path3 = '/' + res3.path
 
       var ctx = wx.createCanvasContext('shareCanvas', this)
       const { screenWidth, screenHeight } = wx.getSystemInfoSync()
 
+      ctx.setFillStyle('#C8534B')
+      ctx.fillRect(0, 0, 240, 375)
+
       ctx.setFillStyle('white')
       ctx.fillRect(10, 120, 220, 240)
-      // 背景图
+      // 头像
       ctx.drawImage(path1, 100, 10, 40, 40)
-      // 二维码
-      ctx.drawImage(path2, 25, 135, 180, 91)
       // 商品图
+      ctx.drawImage(path2, 25, 135, 180, 91)
+      // 二维码
       ctx.drawImage(path3, 80, 260, 80, 80)
 
       ctx.setTextAlign('center')
@@ -192,13 +174,14 @@ Component({
     },
 
     hideDialog: function(e) {
+      wx.hideLoading()
       this.triggerEvent('customEvent', { bubbles: true, composed: true })
     },
 
     getImageRequestPromises: function () {
       let getImageInfoPromisify = this.wxPromisify(wx.getImageInfo)
       let p1 = getImageInfoPromisify({
-        src: this.data.info.avatarUrl
+        src: '/images/logo.jpg'
       })
       let p2 = getImageInfoPromisify({
         src: this.data.info.image

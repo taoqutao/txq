@@ -25,7 +25,7 @@
         <view class='date'>自动开奖</view>
       </view>
       <view class='button' bindtap='tapFavotite'>
-        <image src='{{favorite_url}}' class='card-button-icon' mode='aspectFit'></image>
+        <image src="{{isFavorite == 1 ?  '/images/ufo_highlight.png' : '/images/ufo.png'}}" class='card-button-icon' mode='aspectFit'></image>
         <view class='description'>{{info.amount}}</view>
       </view>
       <view class='line'></view>
@@ -75,12 +75,12 @@
 
   <view wx:if='{{lucky_members.length > 0}}' class='item4'>
     <view class='title'>{{'中奖用户('+lucky_members.length+')'}}</view>
-    <block wx:for='{{[1, 2, 3]}}'>
+    <block wx:for='{{lucky_members}}'>
       <view class='card'>
-        <image src='' class='icon' mode='aspectFit'></image>
-        <text class='t1'>abcd</text>
+        <image src='{{item.avatar_url}}' class='icon' mode='aspectFit'></image>
+        <text class='t1'>{{avatar_url.nick_name}}</text>
         <view class='card-wrapper'>
-          <text class='t2'>小米充电宝</text>
+          <text class='t2'></text>
         </view>
       </view>
     </block>
@@ -88,14 +88,14 @@
 
   <!-- ************* item5 ************* -->
 
-  <view class='item8' wx:if="{{ info.order_state == 1 || info.process == 10 }}">
+  <view class='item8' wx:if="{{ info.order_state == 1 && info.process == 10 }}">
     <view wx:if='{{info.order_state == 1}}' class='done'>
       <image src='/images/planet.png' class='item5-image' mode='aspectFit'></image>
       <text class='done-tt'>参与成功，待开奖～</text>
     </view>
-    
-    <form wx:else bindsubmit="submitInfo" report-submit='true' >
-      <button form-type="submit" type="default" class='do'  open-type='getUserInfo' bindgetuserinfo='tapDo'>参与抽奖</button>
+
+    <form wx:else bindsubmit="submitInfo" report-submit='true'>
+      <button form-type="submit" type="default" class='do' open-type='getUserInfo' bindgetuserinfo='tapDo'>参与抽奖</button>
     </form>
   </view>
 
@@ -115,22 +115,21 @@
   </view>
 
   <!-- <view class='item6'></view> -->
-·
   <view class='item7'>
     <view class='button' bindtap='tapShare'>分享给好友</view>
   </view>
 
-  <!-- ************* tip ************* -->
+</view>
 
-  <view class='tip' bindtap='tapTip' wx:if='{{showTip}}'>
+<!-- ************* tip ************* -->
+
+  <view class='tip' bindtap='tapTip' wx:if='{{info && showTip}}'>
     <view class='shape'></view>
     <view class='tip-container'>
       <text class='txt' decode='{{true}}'>&nbsp;&nbsp;&nbsp;点击“添加到桌面”，参与抽奖快人一步～&nbsp;&nbsp;</text>
       <image src='/images/close.jpg' class='close'></image>
     </view>
   </view>
-</view>
-
 <!-- ************* toast ************* -->
 <ts type='{{prize_state}}' />
 <tp wx:if='{{showJoin}}' bindcustomevent='tapJoin' />

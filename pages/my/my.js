@@ -10,6 +10,7 @@ Page({
       nickName: '点击登录',
       avatarUrl: '/images/ufo.png'
     },
+    joined_count: 0
   },
 
   /**
@@ -32,6 +33,22 @@ Page({
     // 获取用户信息
     app.globalData.userInfo && this.setData({
       userInfo: app.globalData.userInfo
+    })
+
+    twx.request({
+      url: '/api/order/query',
+      method: 'GET'
+    }).then((data) => {
+      if (data.code) {
+        const {
+          data: {
+            total_count = 0
+          } = {}
+        } = data
+        this.setData({
+          joined_count: total_count
+        })
+      }
     })
   },
 
@@ -84,6 +101,7 @@ Page({
           this.setData({
             userInfo: e.detail.userInfo
           })
+          this.onShow()
         } else {
           return;
         } 

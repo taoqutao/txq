@@ -12,7 +12,7 @@
     <text class='t2'>发起抽奖</text>
   </view>
   <view class='block' bindtap='jump' id='1'>
-    <text class='t1'>0</text>
+    <text class='t1'>{{joined_count}}</text>
     <text class='t2'>参与抽奖</text>
   </view>
   <view class='block'>

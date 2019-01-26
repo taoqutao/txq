@@ -84,12 +84,10 @@ function request(object) {
 
   var nSuccess = ({data}) => {
     // setCookies(res.data);
-    if (data && data.code == 999) {
-      let app = getApp()
-      twx.jumpLogin(app.currentPage)
-    } else {
-      oSuccess(data);
-    }
+    // if (data && data.code == 401) {
+    //   twx.login();
+    // }
+    oSuccess(data);
   }
   object.success = nSuccess;
 

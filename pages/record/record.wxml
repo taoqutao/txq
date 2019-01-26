@@ -3,15 +3,15 @@
 <view class='container'>
   <block wx:for='{{list}}'>
     <view class='card' id='{{item.id}}' bindtap='tapCard'>
-      <image src='' class='image' mode='aspectFit'></image>
+      <image src='{{item.image}}' class='image' mode='aspectFill'></image>
       <view class='box'>
         <text class='t1'>{{'奖品：'+ item.name}}</text>
         <view class='wrapper'>
-          <!-- <image src='/images/people.png' class='icon' mode='aspectFit'></image>
-          <text class='t2'>{{'参与人数：'+'1234' + '人'}}</text> -->
+          <!-- <image src='/images/people.png' class='icon' mode='aspectFit'></image> -->
+          <text class='t2'>{{item.time}}</text>
         </view>
       </view>
-      <view class='button'>已结束</view>
+      <view class='button'>{{item.state}}</view>
     </view>
   </block>
 </view>
