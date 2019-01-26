@@ -16,7 +16,12 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function(options) {
-    const {state} = options;
+    const {
+      state
+    } = options;
+    state && wx.setNavigationBarTitle({
+      title: '中奖纪录'
+    })
     twx.request({
       url: '/api/order/query' + (state ? '?status=' + state : ''),
       method: 'GET'
@@ -33,7 +38,9 @@ Page({
           } = {}
         } = data
 
-        let list = orders.map((item, index) => {
+        let list = orders.filter((item, index) => {
+          return item.order_status == '1'
+        }).map((item, index) => {
           let stateName = map[parseInt(item.activity_status)]
           let images = item.goods_img.split(',').filter((item, idex) => {
             return !!item

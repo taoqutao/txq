@@ -84,9 +84,9 @@ function request(object) {
 
   var nSuccess = ({data}) => {
     // setCookies(res.data);
-    // if (data && data.code == 401) {
-    //   twx.login();
-    // }
+    if (data && data.code == 401) {
+      twx.login();
+    }
     oSuccess(data);
   }
   object.success = nSuccess;

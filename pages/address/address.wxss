@@ -11,7 +11,7 @@ Page {
   width: 100%;
   min-height: 90rpx;
   background-color: white;
-  margin-bottom: 4rpx;
+  margin-bottom: 1px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
