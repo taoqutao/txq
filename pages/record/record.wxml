@@ -11,7 +11,7 @@
           <text class='t2'>{{item.time}}</text>
         </view>
       </view>
-      <view class='button'>{{item.state}}</view>
+      <view class="{{item.state == 10 ? 'button' : 'button2'}}">{{item.stateName}}</view>
     </view>
   </block>
 </view>

@@ -44,7 +44,6 @@ Page({
         let d = data.data.activity
 
         info.isFavorite = data.data.user_point
-        info.prize_state = data.data.user_prize
         info.members_count = data.data.total_count
         info.order_state = data.data.user_join //只表示用户是否参与
         info.name = d.goods_name + ' x ' + d.goods_count
@@ -135,16 +134,16 @@ Page({
         })
       }
     })
-    // twx.request({
-    //   url: '/api/activity/user/prize/' + activityId,
-    //   method: 'GET'
-    // }).then((data)=>{
-    //   if(data.code) {
-    //     this.setData({
-    //       prize_state: data.data.user_prize
-    //     })
-    //   }
-    // })
+    twx.request({
+      url: '/api/activity/user/prize/' + activityId,
+      method: 'GET'
+    }).then((data)=>{
+      if(data.code) {
+        this.setData({
+          prize_state: data.data.user_prize
+        })
+      }
+    })
     // twx.request({
     //   url: '/api/activity/user/point/' + activityId,
     // }).then((data) => {

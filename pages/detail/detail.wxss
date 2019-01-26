@@ -101,6 +101,18 @@ Page {
   font-size: 20rpx;
 }
 
+.card .state2 {
+  font-family: PingFangSC-Medium;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90rpx;
+  height: 38rpx;
+  border: 1px solid #df7b87;
+  color: #df7b87;
+  font-size: 20rpx;
+}
+
 .card .wx-btn {
   font-family: PingFangSC-Medium;
   display: flex;

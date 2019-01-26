@@ -34,7 +34,7 @@ Page({
         } = data
 
         let list = orders.map((item, index) => {
-          let state = map[parseInt(item.activity_status)]
+          let stateName = map[parseInt(item.activity_status)]
           let images = item.goods_img.split(',').filter((item, idex) => {
             return !!item
           }).map((item, idx) => {
@@ -44,8 +44,9 @@ Page({
             id: item.activity_id,
             name: item.goods_name,
             image: images[0],
-            state: state,
-            time: item.create_time
+            state: item.activity_status,
+            time: item.create_time,
+            stateName: stateName
           }
         })
         this.setData({

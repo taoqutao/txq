@@ -67,7 +67,7 @@ Page {
   color: #BFBFBF;
 }
 
-.card .button {
+.card .button2 {
   font-family: PingFangSC-Medium;
   display: flex;
   align-items: center;
@@ -76,6 +76,21 @@ Page {
   height: 45rpx;
   border: 1px solid #df7b87;
   color: #DF7B87;
+  font-size: 20rpx;
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+}
+
+.card .button {
+  font-family: PingFangSC-Medium;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90rpx;
+  height: 45rpx;
+  border: 1px solid #57bd37;
+  color: #57bd37;
   font-size: 20rpx;
   position: absolute;
   bottom: 20rpx;
