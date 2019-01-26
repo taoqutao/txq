@@ -26,7 +26,7 @@
       </view>
       <view class='button' bindtap='tapFavotite'>
         <image src="{{info.isFavorite == 1 ?  '/images/ufo_highlight.png' : '/images/ufo.png'}}" class='card-button-icon' mode='aspectFit'></image>
-        <view class='description' style="{{info.isFavorite == 1 ? 'color:#df7b87;' : ''}}">{{info.amount}}</view>
+        <view class='description' style="{{info.isFavorite == 1 ? 'color:#F6AFAC;' : ''}}">{{info.amount}}</view>
       </view>
       <view class='line'></view>
       <view class='bottom'>

@@ -38,9 +38,11 @@ Page({
           } = {}
         } = data
 
-        let list = orders.filter((item, index) => {
+
+        let list = state ? orders.filter((item, index) => {
           return item.order_status == '1'
-        }).map((item, index) => {
+        }) : orders;
+        list = list.map((item, index) => {
           let stateName = map[parseInt(item.activity_status)]
           let images = item.goods_img.split(',').filter((item, idex) => {
             return !!item
