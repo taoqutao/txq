@@ -8,7 +8,7 @@ Page({
   data: {
     userInfo: {
       nickName: '点击登录',
-      avatarUrl: '/images/ufo.png'
+      avatarUrl: '/images/avatar.jpg'
     },
     joined_count: 0,
     prized_count: 0
@@ -36,7 +36,7 @@ Page({
       userInfo: app.globalData.userInfo
     })
 
-    twx.request({
+    app.globalData.userInfo && twx.request({
       url: '/api/order/query',
       method: 'GET'
     }).then((data) => {
@@ -100,7 +100,7 @@ Page({
     let url = ''
     switch (e.currentTarget.id) {
       case '0':
-        if (this.data.userInfo) {
+        if (app.globalData.userInfo) {
           url = '/pages/address/address'
         } else if (e.detail.userInfo) {
           app.globalData.userInfo = e.detail.userInfo
@@ -108,6 +108,7 @@ Page({
             userInfo: e.detail.userInfo
           })
           this.onShow()
+          return;
         } else {
           return;
         } 

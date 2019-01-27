@@ -18,8 +18,8 @@ Page {
 }
 
 .t1 {
-  width: 130rpx;
-  font-size: 28rpx;
+  width: 150rpx;
+  font-size: 35rpx;
   margin-left: 20rpx;
 }
 
@@ -29,7 +29,7 @@ Page {
   margin-left: 20rpx;
 }
 .input {
-  width: 520rpx;
+  width: 500rpx;
   font-size: 28rpx;
   margin: 20rpx 0 20rpx 0;
 }

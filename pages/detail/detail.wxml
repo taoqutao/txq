@@ -18,15 +18,15 @@
         <view class='date'>发起人：</view>
         <view class='date'>{{info.author}}</view>
         <view class='wx-btn' bindtap='tapClip'>加微信</view>
+        <view class='button' bindtap='tapFavotite'>
+          <image src="{{info.isFavorite == 1 ?  '/images/ufo_highlight.png' : '/images/ufo.png'}}" class='card-button-icon' mode='aspectFit'></image>
+          <view class='description' style="{{info.isFavorite == 1 ? 'color:#F6AFAC;' : ''}}">{{info.amount}}</view>
+        </view>
       </view>
       <view class='card-wrapper'>
         <image src='/images/time1.png' class='card-icon' mode='aspectFit'></image>
         <view class='date'>{{info.startTime}}</view>
         <view class='date'>自动开奖</view>
-      </view>
-      <view class='button' bindtap='tapFavotite'>
-        <image src="{{info.isFavorite == 1 ?  '/images/ufo_highlight.png' : '/images/ufo.png'}}" class='card-button-icon' mode='aspectFit'></image>
-        <view class='description' style="{{info.isFavorite == 1 ? 'color:#F6AFAC;' : ''}}">{{info.amount}}</view>
       </view>
       <view class='line'></view>
       <view class='bottom'>
@@ -123,13 +123,13 @@
 
 <!-- ************* tip ************* -->
 
-  <view class='tip' bindtap='tapTip' wx:if='{{info && showTip}}'>
-    <view class='shape'></view>
-    <view class='tip-container'>
-      <text class='txt' decode='{{true}}'>&nbsp;&nbsp;&nbsp;点击“添加到桌面”，参与抽奖快人一步～&nbsp;&nbsp;</text>
-      <image src='/images/close.jpg' class='close'></image>
-    </view>
+<view class='tip' bindtap='tapTip' wx:if='{{info && showTip}}'>
+  <view class='shape'></view>
+  <view class='tip-container'>
+    <text class='txt' decode='{{true}}'>&nbsp;&nbsp;&nbsp;点击“添加到桌面”，参与抽奖快人一步～&nbsp;&nbsp;</text>
+    <image src='/images/close.jpg' class='close'></image>
   </view>
+</view>
 <!-- ************* toast ************* -->
 <ts type='{{prize_state}}' />
 <tp wx:if='{{showJoin}}' bindcustomevent='tapJoin' />

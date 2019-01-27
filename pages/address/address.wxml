@@ -16,4 +16,4 @@
   <image src='/images/location.png' class='image' mode='aspectFit'></image>
 </view>
 
-<view class='btn' bindtap='tapDone'>完成</view>
+<view class='btn' bindtap='tapDone'>保存</view>

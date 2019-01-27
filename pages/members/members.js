@@ -26,9 +26,8 @@ Page({
         const { data: {
           orders = []
         } = {} } = res
-        let list = orders.slice(0, 8)
         this.setData({
-          members: list
+          members: orders
         })
       }
     }).finally(()=>{

@@ -75,7 +75,7 @@
 }
 
 .btn {
-  font-size: 25rpx;
+  font-size: 28rpx;
   color: white;
   width: 518rpx;
   height: 84rpx;
