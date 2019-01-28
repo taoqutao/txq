@@ -9,7 +9,8 @@ Page({
     imgUrls: [
       '/images/banner.jpg',
     ],
-    activities: []
+    activities: [],
+    showError: false
   },
   onLoad: function(options) {
     if (options.activitiId) {
@@ -42,11 +43,21 @@ Page({
           }
         })
         this.setData({
-          activities: list
+          activities: list,
+          showError: false
+        })
+      } else {
+        this.setData({
+          showError: true
         })
       }
+    }).catch((err)=>{
+      this.setData({
+        showError: true
+      })
     }).finally(() => {
       wx.hideLoading()
+      wx.stopPullDownRefresh()
     })
   },
   onShow: function() {
@@ -80,5 +91,14 @@ Page({
     wx.navigateTo({
       url: '',
     })
+  },
+  tapError: function(e) {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+    this.request(true)
+  },
+  onPullDownRefresh: function() {
+    this.request(true)
   }
 })

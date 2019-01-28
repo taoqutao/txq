@@ -20,7 +20,7 @@
         <view class='wx-btn' bindtap='tapClip'>加微信</view>
         <view class='button' bindtap='tapFavotite'>
           <image src="{{info.isFavorite == 1 ?  '/images/ufo_highlight.png' : '/images/ufo.png'}}" class='card-button-icon' mode='aspectFit'></image>
-          <view class='description' style="{{info.isFavorite == 1 ? 'color:#F6AFAC;' : ''}}">{{info.amount}}</view>
+          <view class='description' style="{{info.isFavorite == 1 ? 'color:#FF5452;' : ''}}">{{info.amount}}</view>
         </view>
       </view>
       <view class='card-wrapper'>

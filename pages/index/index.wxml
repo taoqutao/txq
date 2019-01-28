@@ -51,6 +51,10 @@
       <text>更多福利即将上线～</text>
     </view>
   </view>
+  <view class='error' wx:if='{{showError}}' bindtap='tapError'>
+      <text>哎呦，有点慢哦～</text>
+      <text class='t1'>点我加速</text>
+    </view>
 </view>
 
 <!-- <view class='ad'></view> -->

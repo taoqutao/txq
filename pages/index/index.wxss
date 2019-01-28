@@ -222,6 +222,19 @@ Page {
   font-size: 20rpx;
   color: #383838;
 }
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 180rpx;
+  font-size: 38rpx;
+}
+
+.error .t1 {
+  color: #ed615a
+}
 
 .ad {
   width: 100%;
