@@ -483,8 +483,9 @@ Page {
   height: 240rpx;
   background-color: #ed6059;
   color: white;
-  font-size: 34rpx;
+  font-size: 36rpx;
   border-radius: 120rpx;
+  font-family: PingFangSC-Medium;
 }
 
 .item8 .do::after{
