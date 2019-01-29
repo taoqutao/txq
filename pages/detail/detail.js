@@ -29,6 +29,9 @@ Page({
    */
   onLoad: function(options) {
     this.data.activityId = options.id
+    this.setData({
+      showTip: getApp().globalData.os != 'iPhone'
+    })
     this.request()
   },
 
@@ -159,7 +162,7 @@ Page({
    * Lifecycle function--Called when page is initially rendered
    */
   onReady: function() {
-    setTimeout(() => {
+    this.data.showTip && setTimeout(() => {
       this.tapTip()
     }, 3000)
   },

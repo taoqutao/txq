@@ -138,5 +138,5 @@
 <view class='picker' wx:if='{{showPicker}}'>
   <button class='item' open-type='share'>分享给好友</button>
   <view style='width:740rpx;height:1px;background-color: #F0EFF3'></view>
-  <button class='item' open-type='getUserInfo' bindgetuserinfo='tapPictureShare'>生成分享图片</button>
+  <button class='item' open-type='getUserInfo' bindgetuserinfo='tapPictureShare'>分享图片到朋友圈</button>
 </view>

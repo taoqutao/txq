@@ -28,7 +28,6 @@ Page {
 }
 
 .item .item-wrapper {
-  flex: 1;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -39,12 +38,17 @@ Page {
   margin-left: 30rpx;
   font-size: 28rpx;
   font-family: PingFangSC-Thin;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .item .t2 {
   font-size: 24rpx;
   font-family: PingFangSC-Thin;
-  color: #B5B5B5
+  color: #B5B5B5;
+  max-width: 250rpx;
 }
 
 .ad {

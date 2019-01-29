@@ -7,6 +7,7 @@ Page {
   align-items: center;
   box-sizing: border-box;
   background-color: #f0eff3;
+  overflow: hidden;
 }
 
 .tip {
@@ -349,13 +350,19 @@ Page {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
   padding-right: 30rpx;
+  margin: 0;
 }
 
 .item4 .card .t1 {
   margin-left: 30rpx;
   font-size: 28rpx;
   font-family: PingFangSC-Thin;
+  max-width: 150rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .item4 .card .t2 {

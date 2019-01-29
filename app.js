@@ -18,6 +18,11 @@ App({
         this.globalData.userInfo = res.userInfo
       }
     })
+    wx.getSystemInfo({
+      success: (res) => {
+        this.globalData.os = res.brand
+      }
+    })
   },
   globalData: {
     userInfo: null

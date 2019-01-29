@@ -60,7 +60,7 @@ Component({
       var ctx = wx.createCanvasContext('shareCanvas', this)
       const { screenWidth, screenHeight } = wx.getSystemInfoSync()
 
-      ctx.setFillStyle('#C8534B')
+      ctx.setFillStyle('#FF5452')
       ctx.fillRect(0, 0, 240, 375)
 
       ctx.setFillStyle('white')
@@ -68,18 +68,18 @@ Component({
       // 头像
       ctx.drawImage(path1, 100, 10, 40, 40)
       // 商品图
-      ctx.drawImage(path2, 25, 135, 180, 91)
+      ctx.drawImage(path2, 30, 135, 180, 91)
       // 二维码
       ctx.drawImage(path3, 80, 260, 80, 80)
 
       ctx.setTextAlign('center')
       ctx.setFillStyle('#ffffff')
 
-      ctx.setFontSize(14)
+      ctx.setFontSize(13)
       ctx.fillText(this.data.info.nickName, 120, 70)
       ctx.stroke()
 
-      ctx.setFontSize(16)
+      ctx.setFontSize(15)
       ctx.fillText(this.data.info.title, 120, 90)
       ctx.stroke()
 
@@ -89,7 +89,7 @@ Component({
 
       ctx.setTextAlign('left')
       ctx.setFillStyle('#000000')
-      ctx.setFontSize(14)
+      ctx.setFontSize(13)
       ctx.fillText(this.data.info.des, 20, 250)
       ctx.stroke()
 
