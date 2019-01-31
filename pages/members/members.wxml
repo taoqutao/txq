@@ -1,12 +1,15 @@
 <!--pages/members/members.wxml-->
-<block wx:for='{{members}}'>
-  <view class='item'>
-    <image src='{{item.avatar_url}}' class='icon' mode='aspectFit'></image>
-    <text class='t1'>{{item.nick_name}}</text>
-    <view class='item-wrapper'>
-      <text class='t2'>{{item.create_time}}</text>
+<view style='overflow-x: hidden;width:100%'>
+  <block wx:for='{{members}}'>
+    <view class='item'>
+      <image src='{{item.avatar_url}}' class='icon' mode='aspectFit'></image>
+      <text class='t1'>{{item.nick_name}}</text>
+      <view class='item-wrapper'>
+        <text class='t2'>{{item.create_time}}</text>
+      </view>
     </view>
-  </view>
-</block>
+  </block>
+</view>
+
 
 <!-- <view class='ad'></view> -->

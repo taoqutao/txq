@@ -48,7 +48,7 @@ Page {
   font-size: 24rpx;
   font-family: PingFangSC-Thin;
   color: #B5B5B5;
-  max-width: 250rpx;
+  width: 250rpx;
 }
 
 .ad {
