@@ -173,7 +173,7 @@ Page({
   onReady: function() {
     this.data.showTip && setTimeout(() => {
       this.tapTip()
-    }, 5000)
+    }, 10000)
   },
 
   /**

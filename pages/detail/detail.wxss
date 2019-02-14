@@ -121,8 +121,8 @@ Page {
   justify-content: center;
   width: 80rpx;
   height: 30rpx;
-  border: 1px solid #999;
-  color: #999;
+  color: #FF5452;
+  border: 1px solid #FF5452;
   font-size: 20rpx;
   border-radius: 6rpx;
   margin-left: 15rpx;
@@ -135,7 +135,6 @@ Page {
 }
 
 .card .date {
-  color: #9e9e9e;
   font-size: 28rpx;
   margin-right: 5rpx;
 }
@@ -189,8 +188,7 @@ Page {
 
 .card .bottom .bottom-txt {
   font-size: 30rpx;
-  color: #6b6b6b;
-  font-family: PingFangSC-Thin;
+  color: black;
 }
 
 .card .bottom .bottom-description {
@@ -200,8 +198,7 @@ Page {
   align-items: center;
   justify-content: flex-end;
   margin-right: 40rpx;
-  color: #6b6b6b;
-  font-family: PingFangSC-Thin;
+  color: black;
 }
 
 .item2 {
