@@ -90,14 +90,18 @@ Page({
     })
   },
   tapDone: function(e) {
-    let info = this.data.newinfo
+    let info = Object.assign(this.data.info, this.data.newinfo)
     wx.setStorage({
       key: '__address',
       data: info,
     })
     twx.request({
-      url: '/api/user/modify',
-      data: info
+      url: '/api/order/modify/address',
+      data: {
+        address: info.address,
+        receiver: info.name,
+        mobile: info.phone
+      }
     }).then((res)=>{
       if (res.code) {
         wx.showToast({

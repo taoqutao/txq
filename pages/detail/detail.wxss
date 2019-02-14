@@ -222,8 +222,7 @@ Page {
 }
 
 .item2-container .tt {
-  color: #777;
-  font-size: 28rpx;
+  font-size: 30rpx;
   font-family: PingFangSC-Regular;
 }
 
@@ -534,4 +533,17 @@ border:none;
 .picker .item::after {
   border: none;
   border-radius: 0;
+}
+
+.error {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.error .t1 {
+  color: #ed615a
 }

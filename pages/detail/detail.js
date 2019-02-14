@@ -2,6 +2,8 @@
 import {
   twx
 } from '../../twx/twx.js'
+var Promise = require('../../utils/lib/promise.js');
+var lock = false
 
 Page({
 
@@ -22,6 +24,7 @@ Page({
     shareInfo: {},
     prize_state: null,
     showJoin: false,
+    showError: false
   },
 
   /**
@@ -29,9 +32,6 @@ Page({
    */
   onLoad: function(options) {
     this.data.activityId = options.id
-    this.setData({
-      showTip: getApp().globalData.os != 'iPhone'
-    })
     this.request()
   },
 
@@ -77,14 +77,23 @@ Page({
         info.processName = process
         info.process = d.status
         this.setData({
-          info
+          info: info,
+          showError: false
         })
         let interval = new Date(info.startTime).getTime() - new Date().getTime()
         interval > 0 && (this.data.timer = setTimeout(() => {
           clearTimeout(this.data.timer)
           this.request()
         }, interval))
+      } else {
+        this.setData({
+          showError: true
+        })
       }
+    }).catch((err)=>{
+      this.setData({
+        showError: true
+      })
     }).finally(() => {
       wx.hideLoading()
     })
@@ -140,8 +149,8 @@ Page({
     twx.request({
       url: '/api/activity/user/prize/' + activityId,
       method: 'GET'
-    }).then((data)=>{
-      if(data.code) {
+    }).then((data) => {
+      if (data.code) {
         this.setData({
           prize_state: data.data.user_prize
         })
@@ -164,7 +173,7 @@ Page({
   onReady: function() {
     this.data.showTip && setTimeout(() => {
       this.tapTip()
-    }, 3000)
+    }, 5000)
   },
 
   /**
@@ -247,12 +256,18 @@ Page({
     })
   },
   tapDo: function(e) {
-    if (e.detail.userInfo) {
+    if (e.detail.userInfo && !lock) {
+      lock = true
+      wx.showLoading({
+        mask: true
+      })
+
       const {
         gender,
         nickName,
         avatarUrl
       } = e.detail.userInfo
+
       twx.request({
         url: '/api/user/modify',
         data: {
@@ -260,6 +275,7 @@ Page({
           nick_name: nickName,
           avatar_url: avatarUrl
         }
+
       }).then((data) => {
         return !!data.code
       }).then((isSynchronized) => {
@@ -285,6 +301,9 @@ Page({
           title: '参与失败',
           icon: 'none'
         })
+      }).finally(() => {
+        wx.hideLoading()
+        lock = false
       })
       getApp().globalData.userInfo = e.detail.userInfo
     } else {
@@ -367,5 +386,129 @@ Page({
         })
       }
     })
+  },
+
+  tapDesImgs: function(e) {
+    const {
+      target: {
+        dataset: {
+          path = ''
+        }
+      }
+    } = e
+
+    path && wx.showLoading()
+    let wxSettingPromisify = new Promise((resolve, reject) => {
+      wx.getSetting({
+        success: function(res) {
+          resolve(res)
+        },
+        fail: function(res) {
+          reject(res)
+        }
+      })
+    })
+
+    let wxAuthPromisify = function(obj = {}) {
+      return new Promise((resolve, reject) => {
+        obj.success = function(res) {
+          resolve(res)
+        }
+        obj.fail = function(res) {
+          reject(res)
+        }
+        wx.authorize(obj)
+      })
+    }
+
+    let wxImagePromisify = function(obj = {}) {
+      return new Promise((resolve, reject) => {
+        obj.success = function(res) {
+          resolve(res)
+        }
+        obj.fail = function(res) {
+          reject(res)
+        }
+        wx.getImageInfo(obj)
+      })
+    }
+
+    let wxWriteImagrPromisify = function(obj = {}) {
+      return new Promise((resolve, reject) => {
+        obj.success = function(res) {
+          resolve(res)
+        }
+        obj.fail = function(res) {
+          reject(res)
+        }
+        wx.saveImageToPhotosAlbum(obj)
+      })
+    }
+
+
+    function save(path) {
+      if (path && path.length > 0) {
+        wxImagePromisify({
+          src: path
+        }).then((res) => {
+          return wxWriteImagrPromisify({
+            filePath: res.path
+          })
+        }).then(res => {
+          wx.showToast({
+            title: '保存成功',
+            icon: 'success',
+            duration: 2000
+          })
+        }).catch(function(err = {}) {
+          wx.showToast({
+            title: err.errMsg || '保存失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }).finally(()=>{
+          wx.hideLoading()
+        })
+      } else {
+        wx.hideLoading()
+      }
+    }
+
+    wxSettingPromisify.then(res => {
+      if (!res.authSetting['scope.writePhotosAlbum']) {
+        wxAuthPromisify({
+          scope: 'scope.writePhotosAlbum'
+        }).then(resp => {
+          save(path)
+        }).catch(function(err) {
+          wx.showModal({
+            title: '授权失败',
+            content: '是否去授权',
+            success: function(res) {
+              if (res.confirm) {
+                wx.openSetting({
+                  success: (res) => {
+                    if (res.authSetting["scope.writePhotosAlbum"]) {
+                      save(path)
+                    }
+                  },
+                })
+              }
+            },
+            fail: function(){
+              wx.hideLoading()
+            }
+          })
+        })
+      } else {
+        save(path)
+      }
+    })
+  },
+  tapError: function (e) {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+    this.request()
   }
 })

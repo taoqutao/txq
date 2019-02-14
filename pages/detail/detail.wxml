@@ -1,5 +1,5 @@
 <!--pages/detail/detail.wxml-->
-<view hidden='{{ !info }}' style='overflow-x: hidden;'>
+<view hidden='{{ !info || showError }}' style='overflow-x: hidden;'>
   <view class='item1'>
     <swiper class='header' indicator-dots='{{info.imgs.length > 1}}' autoplay='true' interval="5000" duration="2000" circular='true'>
       <block wx:for="{{info.imgs}}">
@@ -48,9 +48,9 @@
         <text class='tt'>{{'奖品数量：' + info.rewardCount}}</text>
         <text class='tt' style='margin-left:80rpx'>{{'奖品名额：' + info.rewardCount}}</text>
       </view>
-      <text bindlongtap='tapDescription' class='tt' style='margin-bottom: 20rpx'>{{info.description}}</text>
+      <text class='tt' style='margin-bottom: 20rpx;width:100%;' selectable>{{info.description}}</text>
       <block wx:for="{{info.activity_imgs}}">
-        <image src='{{item}}' class='item2-img' mode='widthFix'></image>
+        <image bindlongpress='tapDesImgs' data-path='{{item}}' src='{{item}}' class='item2-img' mode='widthFix'></image>
       </block>
     </view>
   </view>
@@ -126,7 +126,7 @@
 <view class='tip' bindtap='tapTip' wx:if='{{info && showTip}}'>
   <view class='shape'></view>
   <view class='tip-container'>
-    <text class='txt' decode='{{true}}'>&nbsp;&nbsp;&nbsp;点击“添加到桌面”，参与抽奖快人一步～&nbsp;&nbsp;</text>
+    <text class='txt' decode='{{true}}'>&nbsp;&nbsp;&nbsp;添加到“我的小程序”，更快参与抽奖~&nbsp;&nbsp;</text>
     <image src='/images/close.jpg' class='close'></image>
   </view>
 </view>
@@ -139,4 +139,11 @@
   <button class='item' open-type='share'>分享给好友</button>
   <view style='width:740rpx;height:1px;background-color: #F0EFF3'></view>
   <button class='item' open-type='getUserInfo' bindgetuserinfo='tapPictureShare'>分享图片到朋友圈</button>
+</view>
+
+<!-- ************* error ************* -->
+
+<view class='error' wx:if='{{showError}}' bindtap='tapError'>
+  <text>哎呦，有点慢哦～</text>
+  <text class='t1'>点我加速</text>
 </view>
